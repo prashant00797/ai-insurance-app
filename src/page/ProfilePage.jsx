@@ -1,5 +1,11 @@
+import ProfileUI from "../ui/ProfileUI";
+
 const ProfilePage = () => {
-  return <div>ProfilePage</div>;
+  return (
+    <main className="flex-1 h-full overflow-hidden">
+      <ProfileUI />
+    </main>
+  );
 };
 
 export default ProfilePage;
