@@ -1,0 +1,21 @@
+<svg width="220" height="60" viewBox="0 0 220 60" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="insureGradient" x1="0" y1="0" x2="220" y2="60" gradientUnits="userSpaceOnUse">
+      <stop offset="0%" stop-color="#3B82F6"/>
+      <stop offset="100%" stop-color="#2563EB"/>
+    </linearGradient>
+  </defs>
+
+  <!-- Icon -->
+  <g transform="translate(5,8)">
+    <path d="M25 0C15 4 8 6 0 8V20C0 34 10 44 25 48C40 44 50 34 50 20V8C42 6 35 4 25 0Z" fill="url(#insureGradient)"/>
+    <path d="M25 14C21 14 18 17 18 21V24H32V21C32 17 29 14 25 14Z" fill="white"/>
+    <rect x="17" y="24" width="16" height="12" rx="3" fill="white"/>
+    <circle cx="25" cy="30" r="2" fill="#2563EB"/>
+  </g>
+
+  <!-- Text -->
+  <text x="70" y="38" font-family="Inter, sans-serif" font-size="28" font-weight="600" fill="#1E3A8A">
+    Insure<tspan fill="url(#insureGradient)">AI</tspan>
+  </text>
+</svg>
