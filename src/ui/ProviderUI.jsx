@@ -1,0 +1,81 @@
+const ProviderUI = () => {
+  return (
+    <div className="h-full p-10">
+      <div className="mb-2">
+        <h1 className="text-page-title text-gray-900 font-semibold">
+          Provider
+        </h1>
+      </div>
+      <div className="flex items-center gap-20 mb-5">
+        <div className="bg-primary-600 text-white rounded-default w-full h-10 text-center p-2">
+          48 Total Providers
+        </div>
+        <div className="bg-success text-white rounded-default w-full  h-10 text-center p-2">
+          3 In-network
+        </div>
+        <div className="bg-danger text-white rounded-default w-full  h-10 text-center p-2">
+          1 Out-network
+        </div>
+      </div>
+
+      <div className="shadow-level-2 rounded-default border border-gray-200 overflow-hidden">
+        <table className="w-full text-left ">
+          <thead className="bg-gray-100 text-gray-500 text-card-title tracking-wide">
+            <tr>
+              <th className="px-4 py-2 font-semibold">Doctor</th>
+              <th className="px-4 py-2 font-semibold">Speciality</th>
+              <th className="px-4 py-2 font-semibold">Status</th>
+              <th className="px-4 py-2 font-semibold">Location</th>
+            </tr>
+          </thead>
+          <tbody className="divide-y divide-gray-200">
+            <tr className="hover:bg-gray-50">
+              <td className="px-4 py-2 font-regular">Dr Vrihan</td>
+              <td className="px-4 py-2 font-regular">Cardiologist</td>
+              <td className="px-4 py-2 font-regular">
+                <span className="inline-flex items-center px-2.5 py-1 rounded-full text-xs font-medium bg-red-100 text-danger">
+                  Out-network
+                </span>
+              </td>
+              <td className="px-4 py-2 font-regular">Noida</td>
+            </tr>
+            <tr className="hover:bg-gray-50">
+              <td className="px-4 py-2 font-regular">Dr Ayushman</td>
+              <td className="px-4 py-2 font-regular">Urologist</td>
+              <td className="px-4 py-2 font-regular">
+                <span className="inline-flex items-center px-2.5 py-1 rounded-full text-xs font-medium bg-green-100 text-success">
+                  In-network
+                </span>
+              </td>
+              <td className="px-4 py-2 font-regular">Delhi</td>
+            </tr>
+            <tr className="hover:bg-gray-50">
+              <td className="px-4 py-2 font-regular">Dr Animesh</td>
+              <td className="px-4 py-2 font-regular">Cardiologist</td>
+              <td className="px-4 py-2 font-regular">
+                <span className="inline-flex items-center px-2.5 py-1 rounded-full text-xs font-medium bg-red-100 text-danger">
+                  Out-Network
+                </span>
+              </td>
+              <td className="px-4 py-2 font-regular">Gurugram</td>
+            </tr>
+          </tbody>
+        </table>
+        <div className="shadow-level-2 flex justify-center items-center h-10 gap-10 cursor-pointer">
+          <div className="text-gray-500 mr-2">Page 1 of 2</div>
+          <div className="flex items-center gap-1 text-center">
+            <button className="bg-gray-100 rounded w-10 shadow-level-1 cursor-pointer">
+              {"<"}
+            </button>
+            <div className="bg-gray-100 rounded w-10 shadow-level-1">1</div>
+            <button className="bg-gray-100 rounded w-10 shadow-level-1 cursor-pointer">
+              {">"}
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+  );
+};
+
+export default ProviderUI;
