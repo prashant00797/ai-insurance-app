@@ -1,10 +1,10 @@
 import { Outlet } from "react-router";
-import Navbar from "../ui/Navbar";
+import Sidebar from "../ui/Sidebar";
 
 const ProtectedLayout = () => {
   return (
-    <div>
-      <Navbar />
+    <div className="h-screen flex ">
+      <Sidebar />
       <Outlet />
     </div>
   );

@@ -3,8 +3,10 @@ import AuthPage from "./page/AuthPage";
 import ProtectedLayout from "./page/ProtectedLayout";
 import DashboardPage from "./page/DashboardPage";
 import ClaimsPage from "./page/ClaimsPage";
+import ProviderPage from "./page/ProviderPage";
+import ProfilePage from "./page/ProfilePage";
 
-const isAuthenticated = false;
+const isAuthenticated = true;
 const appRoutes = createBrowserRouter([
   //public routes
   {
@@ -34,7 +36,14 @@ const appRoutes = createBrowserRouter([
         path: "claims",
         element: <ClaimsPage />,
       },
-      //   todo to add PROVIDER AND PROFILE ROUTE
+      {
+        path: "provider",
+        element: <ProviderPage />,
+      },
+      {
+        path: "profile",
+        element: <ProfilePage />,
+      },
     ],
   },
 ]);
