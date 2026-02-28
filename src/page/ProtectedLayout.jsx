@@ -3,7 +3,7 @@ import Sidebar from "../ui/Sidebar";
 
 const ProtectedLayout = () => {
   return (
-    <div className="h-screen flex ">
+    <div className="h-screen flex">
       <Sidebar />
       <Outlet />
     </div>
