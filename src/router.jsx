@@ -4,18 +4,11 @@ import ProtectedLayout from "./page/ProtectedLayout";
 import DashboardPage from "./page/DashboardPage";
 import ClaimsPage from "./page/ClaimsPage";
 
-const isAuthenticated = true;
+const isAuthenticated = false;
 const appRoutes = createBrowserRouter([
   //public routes
   {
-    path: "/login",
-    element: isAuthenticated ? <Navigate to={"/"} replace /> : <AuthPage />,
-    errorElement: (
-      <div>Please check the url. You migght have entered an invalid URL 🚀</div>
-    ),
-  },
-  {
-    path: "/signup",
+    path: "/auth",
     element: isAuthenticated ? <Navigate to={"/"} replace /> : <AuthPage />,
     errorElement: (
       <div>Please check the url. You migght have entered an invalid URL 🚀</div>
@@ -27,7 +20,7 @@ const appRoutes = createBrowserRouter([
     element: isAuthenticated ? (
       <ProtectedLayout />
     ) : (
-      <Navigate to={"/login"} replace />
+      <Navigate to={"/auth"} replace />
     ),
     errorElement: (
       <div>Please check the url. You migght have entered an invalid URL 🚀</div>
