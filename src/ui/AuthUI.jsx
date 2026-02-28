@@ -1,6 +1,6 @@
 import { useState } from "react";
-import bgImage from "./assets/bgImage.webp";
-import logo from "./assets/logo.svg";
+import bgImage from "../assets/bgImage.webp";
+import logo from "../assets/logo.svg";
 const AuthUI = () => {
   const [mode, setMode] = useState("Login");
 

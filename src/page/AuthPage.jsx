@@ -1,5 +1,5 @@
 import { useLocation } from "react-router";
-import AuthUI from "../AuthUI";
+import AuthUI from "../ui/AuthUI";
 const AuthPage = () => {
   const { pathname } = useLocation();
   console.log(pathname);
