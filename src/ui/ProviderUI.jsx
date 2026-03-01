@@ -39,7 +39,7 @@ const ProviderUI = ({ componentData }) => {
           <tbody className="divide-y divide-gray-200">
             {componentData.map((item) => {
               return (
-                <tr className="hover:bg-gray-50">
+                <tr key={item.id} className="hover:bg-gray-50">
                   <td className="px-4 py-2 font-regular whitespace-nowrap">
                     {item.providerName}
                   </td>
