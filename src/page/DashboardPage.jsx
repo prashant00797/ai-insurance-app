@@ -19,7 +19,9 @@ const DashboardPage = () => {
   };
 
   return (
-    <main className="flex-1 h-full overflow-hidden ">
+    <main
+      className={`flex-1 mt-10  lg:pb-0 ${search.length !== 0 ? "overflow-y-auto" : "overflow-hidden"}`}
+    >
       <DashboardUI
         search={search}
         handleSearch={handleSearchValue}
