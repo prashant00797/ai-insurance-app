@@ -8,7 +8,7 @@ export const approvedClaims = {
   sort: null,
 };
 
-//With limit - show my last 3 approved claims
+//With limit and sort - show my last 3 approved claims
 export const recentApprovedClaimsWithLimit = {
   intent: "get_claims",
   filters: {
@@ -33,6 +33,36 @@ export const showClaims = {
   intent: "get_claims",
   filters: {
     status: null,
+  },
+  limit: null,
+  sort: null,
+};
+
+//With limit and sort -  show my first 3 approved claims
+export const oldestApprovedClaimsWithLimit = {
+  intent: "get_claims",
+  filters: {
+    status: "approved",
+  },
+  limit: 3,
+  sort: "oldest",
+};
+
+//With sort and limit - show my first denied claims
+export const firstOldestDeniedClaims = {
+  intent: "get_claims",
+  filters: {
+    status: "denied",
+  },
+  limit: 1,
+  sort: "oldest",
+};
+
+//with sort - show my denied claims
+export const oldestDeniedClaims = {
+  intent: "get_claims",
+  filters: {
+    status: "denied",
   },
   limit: null,
   sort: null,
