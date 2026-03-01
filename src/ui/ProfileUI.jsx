@@ -1,6 +1,6 @@
 const ProfileUI = () => {
   return (
-    <div className="h-full p-20">
+    <div className="h-full p-10">
       <div className="mb-2">
         <h1 className="text-page-title text-gray-900 font-semibold">Profile</h1>
       </div>
