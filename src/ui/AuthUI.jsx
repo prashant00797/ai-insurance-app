@@ -21,7 +21,7 @@ const AuthUI = () => {
       <div className="p-2.5">
         <img src={logo} alt="insureAI" />
       </div>
-      <div className="flex justify-around items-start pt-20 w-full gap-20">
+      <div className="flex flex-col p-10 justify-center items-center lg:flex-row lg:justify-around lg:items-start lg:pt-20 w-full gap-20">
         <div id="intro" className="flex flex-col gap-3 pt-30">
           <h1 className="text-primary-600 text-page-title break-after-all">
             Streamline Your Health Insurance with AI

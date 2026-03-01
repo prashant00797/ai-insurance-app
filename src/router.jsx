@@ -6,7 +6,7 @@ import ClaimsPage from "./page/ClaimsPage";
 import ProviderPage from "./page/ProviderPage";
 import ProfilePage from "./page/ProfilePage";
 
-const isAuthenticated = true;
+const isAuthenticated = false;
 const appRoutes = createBrowserRouter([
   //public routes
   {
