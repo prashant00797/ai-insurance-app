@@ -1,4 +1,11 @@
-const ClaimsUI = () => {
+const ClaimsUI = ({ componentData }) => {
+  const claimsStatus = componentData.map((s) => s.claimStatus);
+  const statusStyles = {
+    approved: "bg-green-100 text-success",
+    pending: "bg-yellow-100 text-warning",
+    denied: "bg-red-100 text-danger",
+  };
+
   return (
     <div className=" p-10">
       <div className="mb-2">
@@ -6,16 +13,16 @@ const ClaimsUI = () => {
       </div>
       <div className="gap-5 mb-5 grid grid-cols-2 lg:flex lg:items-center lg:20">
         <div className="bg-primary-600 text-white rounded-default w-full h-10 text-center p-2">
-          6 Total Claims
-        </div>
-        <div className="bg-warning text-white rounded-default w-full  h-10 text-center p-2">
-          2 Pending
-        </div>
-        <div className="bg-danger text-white rounded-default w-full  h-10 text-center p-2">
-          1 Denied
+          {`${componentData.length} Total Claims`}
         </div>
         <div className="bg-success text-white rounded-default w-full  h-10 text-center p-2">
-          3 Approved
+          {`${claimsStatus.filter((s) => s === "approved").map((i) => i).length} Approved`}
+        </div>
+        <div className="bg-warning text-white rounded-default w-full  h-10 text-center p-2">
+          {`${claimsStatus.filter((s) => s === "pending").map((i) => i).length} Pending`}
+        </div>
+        <div className="bg-danger text-white rounded-default w-full  h-10 text-center p-2">
+          {`${claimsStatus.filter((s) => s === "denied").map((i) => i).length} Denied`}
         </div>
       </div>
 
@@ -33,45 +40,27 @@ const ClaimsUI = () => {
             </tr>
           </thead>
           <tbody className="divide-y divide-gray-200">
-            <tr className="hover:bg-gray-50">
-              <td className="px-4 py-2 font-regular">1</td>
-              <td className="px-4 py-2 font-regular">xyz</td>
-              <td className="px-4 py-2 font-regular">
-                <span className="inline-flex items-center px-2.5 py-1 rounded-full text-xs font-medium bg-red-100 text-danger">
-                  Denied
-                </span>
-              </td>
-              <td className="px-4 py-2 font-regular">1000</td>
-              <td className="px-4 py-2 font-regular whitespace-nowrap">
-                11-11-1111
-              </td>
-            </tr>
-            <tr className="hover:bg-gray-50">
-              <td className="px-4 py-2 font-regular">2</td>
-              <td className="px-4 py-2 font-regular">xyz</td>
-              <td className="px-4 py-2 font-regular">
-                <span className="inline-flex items-center px-2.5 py-1 rounded-full text-xs font-medium bg-green-100 text-success">
-                  Approved
-                </span>
-              </td>
-              <td className="px-4 py-2 font-regular">1000</td>
-              <td className="px-4 py-2 font-regular whitespace-nowrap">
-                11-11-1111
-              </td>
-            </tr>
-            <tr className="hover:bg-gray-50">
-              <td className="px-4 py-2 font-regular">3</td>
-              <td className="px-4 py-2 font-regular">xyz</td>
-              <td className="px-4 py-2 font-regular">
-                <span className="inline-flex items-center px-2.5 py-1 rounded-full text-xs font-medium bg-yellow-100 text-warning">
-                  Pending
-                </span>
-              </td>
-              <td className="px-4 py-2 font-regular">1000</td>
-              <td className="px-4 py-2 font-regular whitespace-nowrap">
-                11-11-1111
-              </td>
-            </tr>
+            {componentData.map((item) => {
+              return (
+                <tr className="hover:bg-gray-50">
+                  <td className="px-4 py-2 font-regular">{item.claimId}</td>
+                  <td className="px-4 py-2 font-regular">
+                    {item.providerName}
+                  </td>
+                  <td className="px-4 py-2 font-regular">
+                    <span
+                      className={`inline-flex items-center px-2.5 py-1 rounded-full text-xs font-medium ${statusStyles[item.claimStatus]}`}
+                    >
+                      {item.claimStatus}
+                    </span>
+                  </td>
+                  <td className="px-4 py-2 font-regular">{item.amount}</td>
+                  <td className="px-4 py-2 font-regular whitespace-nowrap">
+                    {item.date}
+                  </td>
+                </tr>
+              );
+            })}
           </tbody>
         </table>
         <div className="flex justify-center items-center w-full h-10 gap-10 cursor-pointer">

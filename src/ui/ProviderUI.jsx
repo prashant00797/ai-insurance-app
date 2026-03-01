@@ -1,4 +1,10 @@
-const ProviderUI = () => {
+const ProviderUI = ({ componentData }) => {
+  const providerStatus = componentData.map((s) => s.providerStatus);
+
+  const statusStyles = {
+    "In-network": "bg-green-100 text-success",
+    "Out-network": "bg-red-100 text-danger",
+  };
   return (
     <div className="p-10">
       <div className="mb-2">
@@ -8,13 +14,13 @@ const ProviderUI = () => {
       </div>
       <div className="gap-5 mb-5 grid grid-cols-2 lg:flex lg:items-center lg:gap-20">
         <div className="bg-primary-600 text-white rounded-default w-full h-10 text-center p-2">
-          48 Total Providers
+          {`${componentData.length} Total Providers`}
         </div>
         <div className="bg-success text-white rounded-default w-full  h-10 text-center p-2">
-          3 In-network
+          {`${providerStatus.filter((i) => i === "In-network").map((i) => i).length} In-Network`}
         </div>
         <div className="bg-danger text-white rounded-default w-full  h-10 text-center p-2">
-          1 Out-network
+          {`${providerStatus.filter((i) => i === "Out-network").map((i) => i).length} Out-Network`}
         </div>
       </div>
 
@@ -31,40 +37,24 @@ const ProviderUI = () => {
             </tr>
           </thead>
           <tbody className="divide-y divide-gray-200">
-            <tr className="hover:bg-gray-50">
-              <td className="px-4 py-2 font-regular whitespace-nowrap">
-                Dr Vrihan
-              </td>
-              <td className="px-4 py-2 font-regular">Cardiologist</td>
-              <td className="px-4 py-2 font-regular">
-                <span className="inline-flex items-center px-2.5 py-1 rounded-full text-xs font-medium bg-red-100 text-danger whitespace-nowrap">
-                  Out-network
-                </span>
-              </td>
-              <td className="px-4 py-2 font-regular">Noida</td>
-            </tr>
-            <tr className="hover:bg-gray-50">
-              <td className="px-4 py-2 font-regular whitespace-nowrap">
-                Dr Ayushman
-              </td>
-              <td className="px-4 py-2 font-regular">Urologist</td>
-              <td className="px-4 py-2 font-regular">
-                <span className="inline-flex items-center px-2.5 py-1 rounded-full text-xs font-medium bg-green-100 text-success whitespace-nowrap">
-                  In-network
-                </span>
-              </td>
-              <td className="px-4 py-2 font-regular">Delhi</td>
-            </tr>
-            <tr className="hover:bg-gray-50">
-              <td className="px-4 py-2 font-regular">Dr Animesh</td>
-              <td className="px-4 py-2 font-regular">Cardiologist</td>
-              <td className="px-4 py-2 font-regular">
-                <span className="inline-flex items-center px-2.5 py-1 rounded-full text-xs font-medium bg-red-100 text-danger whitespace-nowrap">
-                  Out-Network
-                </span>
-              </td>
-              <td className="px-4 py-2 font-regular">Gurugram</td>
-            </tr>
+            {componentData.map((item) => {
+              return (
+                <tr className="hover:bg-gray-50">
+                  <td className="px-4 py-2 font-regular whitespace-nowrap">
+                    {item.providerName}
+                  </td>
+                  <td className="px-4 py-2 font-regular">{item.speciality}</td>
+                  <td className="px-4 py-2 font-regular">
+                    <span
+                      className={`inline-flex items-center px-2.5 py-1 rounded-full text-xs font-medium ${statusStyles[item.providerStatus]}`}
+                    >
+                      {item.providerStatus}
+                    </span>
+                  </td>
+                  <td className="px-4 py-2 font-regular">{item.location}</td>
+                </tr>
+              );
+            })}
           </tbody>
         </table>
         <div className="flex justify-center items-center h-10 gap-10 cursor-pointer">
