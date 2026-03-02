@@ -1,6 +1,6 @@
 import { useState } from "react";
 import DashboardUI from "../ui/DashboardUI";
-import { recentApprovedClaimsWithLimit } from "../jsons/aiResponses";
+import { recentApprovedClaimsWithLimit } from "../jsons/aiResponsesClaims";
 import { getClaimsWithApiIntent } from "../service/claimsService";
 
 const DashboardPage = () => {
