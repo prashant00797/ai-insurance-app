@@ -2,7 +2,13 @@ import botImage from "../assets/botImage.webp";
 import CardPage from "../page/CardPage";
 import BackUI from "./BackUI";
 
-const DashboardUI = ({ search, handleSearch, handleClick, onBack }) => {
+const DashboardUI = ({
+  search,
+  handleSearch,
+  handleClick,
+  onBack,
+  componentData,
+}) => {
   return (
     <>
       <BackUI search={search} onBack={onBack} />
@@ -58,7 +64,7 @@ const DashboardUI = ({ search, handleSearch, handleClick, onBack }) => {
             </div>
           </div>
         ) : (
-          <CardPage />
+          <CardPage componentData={componentData} />
         )}
       </div>
     </>

@@ -14,6 +14,8 @@ const DashboardPage = () => {
 
   const handleSearchClick = () => {
     setSearch(inputValue);
+
+    //main ai api call
     callGemini(inputValue);
   };
 
@@ -28,7 +30,7 @@ const DashboardPage = () => {
 
     const response = await getClaimsWithApiIntent(status);
 
-    console.log(response, "before sorting or limit");
+    // console.log(response, "before sorting or limit");
 
     let finalData = [...response];
 
@@ -51,21 +53,23 @@ const DashboardPage = () => {
     }
 
     setComponentData(finalData);
-    console.log(finalData, "after sorting or limit");
+    // console.log(finalData, "after sorting or limit");
   };
 
   //TODO - const api call for aiService
-  const callGemini = (query) => {
+  const callGemini = (/*query*/) => {
+    // console.log(query, "DashboardPage");
+
     // const result = await interpretQuery(search);
 
-    //TODO - WRITING DUMMY LOGIC FOR NOW
-    console.log(query);
+    /* this result will be put into the below function 
+    where i am passing static intent jsons
+    */
 
     handleApiSearchBasedOnIntent(recentApprovedClaimsWithLimit);
   };
 
-  //here only useeffect api call will be made for aiService
-
+  //back resetting state
   const onBack = () => {
     setSearch("");
   };
