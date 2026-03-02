@@ -8,6 +8,7 @@ const DashboardUI = ({
   handleClick,
   onBack,
   componentData,
+  intentData,
 }) => {
   return (
     <>
@@ -64,7 +65,7 @@ const DashboardUI = ({
             </div>
           </div>
         ) : (
-          <CardPage componentData={componentData} />
+          <CardPage componentData={componentData} intentData={intentData} />
         )}
       </div>
     </>

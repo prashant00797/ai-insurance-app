@@ -1,12 +1,15 @@
 import { useState } from "react";
 import DashboardUI from "../ui/DashboardUI";
-import { recentApprovedClaimsWithLimit } from "../jsons/aiResponsesClaims";
+// import { recentApprovedClaimsWithLimit } from "../jsons/aiResponsesClaims";
 import { getClaimsWithApiIntent } from "../service/claimsService";
+import { getProvidersWithIntent } from "../service/providerService";
+import { limitProviders } from "../jsons/aiResponsesProviders";
 
 const DashboardPage = () => {
   const [search, setSearch] = useState("");
   const [inputValue, setInputValue] = useState("");
   const [componentData, setComponentData] = useState([]);
+  const [intentData, setIntentData] = useState({});
 
   const handleSearchValue = (value) => {
     setInputValue(value);
@@ -19,41 +22,17 @@ const DashboardPage = () => {
     callGemini(inputValue);
   };
 
-  const handleApiSearchBasedOnIntent = async ({
-    intent = "",
-    filters = {},
-    limit = null,
-    sort = null,
-  }) => {
-    const { status } = filters;
-    console.log(limit, intent);
+  const handleApiSearchBasedOnIntent = async (aiData) => {
+    const intent = aiData.intent;
+    let response;
 
-    const response = await getClaimsWithApiIntent(status);
-
-    // console.log(response, "before sorting or limit");
-
-    let finalData = [...response];
-
-    if (sort === "recent") {
-      finalData.sort(
-        (a, b) =>
-          new Date(a.date.split("-").reverse().join("-")) -
-          new Date(b.date.split("-").reverse().join("-")),
-      );
-    } else if (sort === "oldest") {
-      finalData.sort(
-        (a, b) =>
-          new Date(b.date.split("-").reverse().join("-")) -
-          new Date(a.date.split("-").reverse().join("-")),
-      );
+    if (intent === "get_claims") {
+      response = await getClaimsWithApiIntent(aiData);
+    } else if (intent === "get_providers") {
+      response = await getProvidersWithIntent(aiData);
     }
 
-    if (limit !== null && limit <= finalData.length) {
-      finalData = finalData.slice(0, limit);
-    }
-
-    setComponentData(finalData);
-    // console.log(finalData, "after sorting or limit");
+    setComponentData(response);
   };
 
   //TODO - const api call for aiService
@@ -62,11 +41,13 @@ const DashboardPage = () => {
 
     // const result = await interpretQuery(search);
 
+    // we need to extract the intent obj and set it with a state variable and send it to handleApiSearchBasedOnIntent
+
     /* this result will be put into the below function 
     where i am passing static intent jsons
     */
-
-    handleApiSearchBasedOnIntent(recentApprovedClaimsWithLimit);
+    setIntentData(limitProviders);
+    handleApiSearchBasedOnIntent(limitProviders);
   };
 
   //back resetting state
@@ -78,13 +59,18 @@ const DashboardPage = () => {
     <main
       className={`flex-1 mt-10  lg:pb-0 ${search.length !== 0 ? "overflow-y-auto" : "overflow-hidden"}`}
     >
-      <DashboardUI
-        search={search}
-        handleSearch={handleSearchValue}
-        handleClick={handleSearchClick}
-        onBack={onBack}
-        componentData={componentData}
-      />
+      {intentData.intent === "unknown" ? (
+        <div>...oops unknown query🚀🚀</div>
+      ) : (
+        <DashboardUI
+          search={search}
+          handleSearch={handleSearchValue}
+          handleClick={handleSearchClick}
+          onBack={onBack}
+          componentData={componentData}
+          intentData={intentData}
+        />
+      )}
     </main>
   );
 };

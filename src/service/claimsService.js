@@ -11,7 +11,12 @@ export const getClaims = async () => {
   return data;
 };
 
-export const getClaimsWithApiIntent = async (status = null) => {
+export const getClaimsWithApiIntent = async ({
+  filters = {},
+  limit = null,
+  sort = null,
+}) => {
+  const { status } = filters;
   const url = new URL(BASE_URL_CLAIMS);
 
   if (status) {
@@ -25,5 +30,25 @@ export const getClaimsWithApiIntent = async (status = null) => {
     })
   ).json();
 
-  return data;
+  let finalData = [...data];
+
+  if (sort === "recent") {
+    finalData.sort(
+      (a, b) =>
+        new Date(a.date.split("-").reverse().join("-")) -
+        new Date(b.date.split("-").reverse().join("-")),
+    );
+  } else if (sort === "oldest") {
+    finalData.sort(
+      (a, b) =>
+        new Date(b.date.split("-").reverse().join("-")) -
+        new Date(a.date.split("-").reverse().join("-")),
+    );
+  }
+
+  if (limit !== null && limit <= finalData.length) {
+    finalData = finalData.slice(0, limit);
+  }
+
+  return finalData;
 };

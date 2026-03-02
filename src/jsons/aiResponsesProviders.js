@@ -57,9 +57,42 @@ export const limitProviders = {
   limit: 3,
 };
 
-//  Limit - “Show top 3 providers” - todo
+//  Limit - “Show top 3 cardiologist” - todo
 
-export const limitWithSpeciality = {};
+export const limitWithSpeciality = {
+  intent: "get_providers",
+  filters: {
+    speciality: "cardiologist",
+    location: null,
+    providerStatus: null,
+  },
+  limit: 3,
+};
+
+//  Limit - “Show top 3 cardiologist with in/out network ” - todo check from api
+export const limitWithSpecialityStatus = {
+  intent: "get_providers",
+  filters: {
+    speciality: "cardiologist",
+    location: null,
+    providerStatus: "in-network",
+  },
+  limit: 3,
+};
+
+//  Limit - “Show top 3 cardiologist with in/out network and location ” - todo check from api
+
+export const limitWithSpecialityStatusLocation = {
+  intent: "get_providers",
+  filters: {
+    speciality: "cardiologist",
+    location: "Delhi",
+    providerStatus: "in-network",
+  },
+  limit: 3,
+};
 
 //Unsupported - “Book appointment with dentist” - todo
-export const unsupportedQuery = {};
+export const unsupportedQuery = {
+  intent: "unknown",
+};

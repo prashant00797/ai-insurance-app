@@ -12,7 +12,7 @@ export const approvedClaims = {
 export const recentApprovedClaimsWithLimit = {
   intent: "get_claims",
   filters: {
-    status: "pending",
+    status: "approved",
   },
   limit: 3,
   sort: "recent",
