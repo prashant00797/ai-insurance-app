@@ -1,18 +1,13 @@
-import { useState } from "react";
 import bgImage from "../assets/bgImage.webp";
 import logo from "../assets/logo.svg";
-const AuthUI = () => {
-  const [mode, setMode] = useState("Login");
-
-  const handleMode = (e) => {
-    setMode(e.target.innerText);
-  };
-
-  //this will be handled in auth page container
-  const handleSumbit = (e) => {
-    e.preventDefault();
-  };
-
+const AuthUI = ({
+  mode,
+  handleMode,
+  handleSumbit,
+  handleOnChange,
+  formData,
+  errorMessage,
+}) => {
   return (
     <div
       className=" min-h-screen bg-cover bg-center"
@@ -47,7 +42,7 @@ const AuthUI = () => {
             className=" flex items-center justify-around mb-4"
           >
             <button
-              onClick={(e) => handleMode(e)}
+              onClick={() => handleMode("Login")}
               className={
                 mode === "Login"
                   ? "text-primary-500 border-b-2 border-primary-100 cursor-pointer"
@@ -62,32 +57,32 @@ const AuthUI = () => {
                   ? "text-primary-500 border-b-2 border-primary-100 cursor-pointer"
                   : "text-gray-900 cursor-pointer hover:brightness-105"
               }
-              onClick={(e) => handleMode(e)}
+              onClick={() => handleMode("SignUp")}
             >
               SignUp
             </button>
           </div>
-          <form
-            className="transition-all duration-300"
-            onSubmit={(e) => handleSumbit(e)}
-          >
+          <form className="transition-all duration-300" onSubmit={handleSumbit}>
             <div id="input-field">
               {mode === "SignUp" && (
                 <>
-                  <div id="fName" className="flex flex-col mb-3">
+                  <div id="fname" className="flex flex-col mb-3">
                     <label
-                      htmlFor="fName"
+                      htmlFor="fname"
                       className="text-gray-900 text-caption mb-0.5 font-semibold"
                     >
                       Full Name
                     </label>
                     <input
                       required
+                      autoComplete="off"
                       type="text"
-                      id="fName"
-                      name="fName"
+                      id="fname"
+                      name="fname"
                       placeholder="🔤Enter Your Full Name"
                       className="border border-gray-200 rounded-default h-[7vmin] p-2 focus:placeholder-transparent transition"
+                      onChange={(e) => handleOnChange(e)}
+                      value={formData.fname}
                     />
                   </div>
                   <div id="crn" className="flex flex-col mb-3">
@@ -99,11 +94,14 @@ const AuthUI = () => {
                     </label>
                     <input
                       required
+                      autoComplete="off"
                       type="number"
                       id="crn"
                       name="crn"
                       placeholder="🔢Enter Your CRN"
                       className="border border-gray-200 rounded-default h-[7vmin] p-2 [appearance:textfield] [&::-webkit-outer-spin-button]:appearance-none [&::-webkit-inner-spin-button]:appearance-none focus:placeholder-transparent transition"
+                      onChange={(e) => handleOnChange(e)}
+                      value={formData.crn}
                     />
                   </div>
                 </>
@@ -117,11 +115,14 @@ const AuthUI = () => {
                 </label>
                 <input
                   required
+                  autoComplete="off"
                   type="text"
                   id="email"
                   name="email"
                   placeholder="✉️Enter Your email"
                   className="border border-gray-200 rounded-default h-[7vmin] p-2 focus:placeholder-transparent transition"
+                  onChange={(e) => handleOnChange(e)}
+                  value={formData.email}
                 />
               </div>
               <div id="password" className="flex flex-col mb-3">
@@ -133,17 +134,20 @@ const AuthUI = () => {
                 </label>
                 <input
                   required
+                  autoComplete="off"
                   type="password"
                   id="pwd"
                   name="pwd"
                   placeholder="🔒********"
                   className="border border-gray-200 rounded-default h-[7vmin] p-2"
+                  onChange={(e) => handleOnChange(e)}
+                  value={formData.pwd}
                 />
               </div>
-              {mode !== "SignUp" && (
-                <div className="text-right mb-7 cursor-pointer">
-                  <a className="text-primary-500 text-caption mb-3 ">
-                    Forgot password?
+              {errorMessage && (
+                <div className=" mb-7">
+                  <a className="text-danger text-caption mb-3 ">
+                    {errorMessage}
                   </a>
                 </div>
               )}
