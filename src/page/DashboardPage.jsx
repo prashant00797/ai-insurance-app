@@ -3,19 +3,29 @@ import DashboardUI from "../ui/DashboardUI";
 // import { recentApprovedClaimsWithLimit } from "../jsons/aiResponsesClaims";
 import { getClaimsWithApiIntent } from "../service/claimsService";
 import { getProvidersWithIntent } from "../service/providerService";
-import { limitProviders } from "../jsons/aiResponsesProviders";
+import {
+  // limitProviders,
+  unsupportedQuery,
+} from "../jsons/aiResponsesProviders";
+import { DashboardAiShimmer } from "../module/Shimmer";
 
 const DashboardPage = () => {
   const [search, setSearch] = useState("");
   const [inputValue, setInputValue] = useState("");
   const [componentData, setComponentData] = useState([]);
   const [intentData, setIntentData] = useState({});
+  const [isLoading, setIsLoading] = useState(false);
+  const [hasSearched, setHasSearched] = useState(false);
 
   const handleSearchValue = (value) => {
     setInputValue(value);
   };
 
   const handleSearchClick = () => {
+    //guard 1 issue
+    if (!inputValue.trim()) return;
+
+    setHasSearched(true);
     setSearch(inputValue);
 
     //main ai api call
@@ -23,21 +33,28 @@ const DashboardPage = () => {
   };
 
   const handleApiSearchBasedOnIntent = async (aiData) => {
-    const intent = aiData.intent;
-    let response;
+    setIsLoading(true);
+    try {
+      const intent = aiData.intent;
+      let response;
 
-    if (intent === "get_claims") {
-      response = await getClaimsWithApiIntent(aiData);
-    } else if (intent === "get_providers") {
-      response = await getProvidersWithIntent(aiData);
+      if (intent === "get_claims") {
+        response = await getClaimsWithApiIntent(aiData);
+      } else if (intent === "get_providers") {
+        response = await getProvidersWithIntent(aiData);
+      }
+
+      setComponentData(response);
+    } catch (error) {
+      console.error(error);
+    } finally {
+      setIsLoading(false);
     }
-
-    setComponentData(response);
   };
 
   //TODO - const api call for aiService
-  const callGemini = (/*query*/) => {
-    // console.log(query, "DashboardPage");
+  const callGemini = (query) => {
+    console.log(query, "DashboardPage");
 
     // const result = await interpretQuery(search);
 
@@ -46,21 +63,29 @@ const DashboardPage = () => {
     /* this result will be put into the below function 
     where i am passing static intent jsons
     */
-    setIntentData(limitProviders);
-    handleApiSearchBasedOnIntent(limitProviders);
+    setIntentData(unsupportedQuery);
+    handleApiSearchBasedOnIntent(unsupportedQuery);
   };
 
-  //back resetting state
+  const handleDefaultClick = (query) => {
+    //guard 3
+    setHasSearched(true);
+    callGemini(query);
+  };
+
+  //back resetting state - guard two
   const onBack = () => {
     setSearch("");
+    setInputValue("");
+    setComponentData([]);
+    setIntentData({});
+    setHasSearched(false);
   };
 
   return (
-    <main
-      className={`flex-1 mt-10  lg:pb-0 ${search.length !== 0 ? "overflow-y-auto" : "overflow-hidden"}`}
-    >
-      {intentData.intent === "unknown" ? (
-        <div>...oops unknown query🚀🚀</div>
+    <main className="flex-1 lg:pb-0">
+      {isLoading ? (
+        <DashboardAiShimmer />
       ) : (
         <DashboardUI
           search={search}
@@ -69,6 +94,9 @@ const DashboardPage = () => {
           onBack={onBack}
           componentData={componentData}
           intentData={intentData}
+          handleDefaultClick={handleDefaultClick}
+          hasSearched={hasSearched}
+          inputValue={inputValue}
         />
       )}
     </main>

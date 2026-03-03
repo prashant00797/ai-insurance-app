@@ -1,7 +1,7 @@
 const Banner = ({ componentData, intentData }) => {
   // console.log(componentData);
   const { intent } = intentData;
-  const statusCount = componentData.length;
+  const statusCount = componentData?.length;
   const statusName =
     statusCount > 0
       ? componentData[0].claimStatus || componentData[0].providerStatus

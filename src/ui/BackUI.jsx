@@ -1,12 +1,13 @@
-const BackUI = ({ search, onBack }) => {
+const BackUI = ({ onBack, hasSearched }) => {
   return (
-    search.length !== 0 && (
-      <div className="p-1 mt-7 lg:mt-0 absolute">
+    hasSearched && (
+      <div className="p-1 lg:mt-0 absolute">
         <button
           onClick={onBack}
-          className="text-primary-500 cursor-pointer hover:brightness-110"
+          type="button"
+          className=" text-page-title rounded-default w-15 p-2 cursor-pointer hover:brightness-110"
         >
-          👈🏼Back
+          ⬅️
         </button>
       </div>
     )

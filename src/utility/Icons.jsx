@@ -36,3 +36,10 @@ export const ProfileIcon = ({ className }) => {
     </svg>
   );
 };
+export const DashboardIcon = ({ className }) => {
+  return (
+    <svg viewBox="0 0 24 24" fill="currentColor" className={className}>
+      <path d="M3 13h8V3H3v10zm10 8h8V11h-8v10zM3 21h8v-6H3v6zm10-18v6h8V3h-8z" />
+    </svg>
+  );
+};

@@ -1,22 +1,35 @@
 import { useEffect, useState } from "react";
 import ProviderUI from "../ui/ProviderUI";
 import { getProviders } from "../service/providerService";
+import { ClaimProviderPageShimmer } from "../module/Shimmer";
+import NoData from "../module/noData";
 
 const ProviderPage = () => {
-  const [componentData, setComponenetData] = useState([]);
+  const [componentData, setComponenetData] = useState(null);
+  const [isLoading, setIsLoading] = useState(false);
 
   const fetchComponentData = async () => {
-    const response = await getProviders();
+    try {
+      setIsLoading(true);
+      const response = await getProviders();
 
-    setComponenetData(response);
+      setComponenetData(response);
+    } catch (error) {
+      console.error(error);
+    } finally {
+      setIsLoading(false);
+    }
   };
 
   useEffect(() => {
-    // eslint-disable-next-line react-hooks/set-state-in-effect
     fetchComponentData();
   }, []);
 
-  return (
+  return isLoading ? (
+    <ClaimProviderPageShimmer />
+  ) : componentData === null ? null : componentData.length === 0 ? (
+    <NoData type="providers" />
+  ) : (
     <main className="flex-1  mt-10 pb-1=24 lg:pb-0">
       <ProviderUI componentData={componentData} />
     </main>
