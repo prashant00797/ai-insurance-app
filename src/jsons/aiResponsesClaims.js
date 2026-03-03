@@ -1,3 +1,13 @@
+//all claims
+export const allClaims = {
+  intent: "get_claims",
+  filters: {
+    status: null,
+  },
+  limit: null,
+  sort: null,
+};
+
 // Basic filter - show approved claims
 export const approvedClaims = {
   intent: "get_claims",

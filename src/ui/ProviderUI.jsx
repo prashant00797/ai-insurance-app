@@ -12,6 +12,7 @@ const ProviderUI = ({ componentData }) => {
           Provider
         </h1>
       </div>
+      {/* this must be a generic label module */}
       <div className="gap-5 mb-5 grid grid-cols-2 lg:flex lg:items-center lg:gap-20">
         <div className="bg-primary-600 text-white rounded-default w-full h-10 text-center p-2">
           {`${componentData.length} Total Providers`}
@@ -23,8 +24,8 @@ const ProviderUI = ({ componentData }) => {
           {`${providerStatus.filter((i) => i === "Out-network").map((i) => i).length} Out-Network`}
         </div>
       </div>
-
-      <div className="shadow-level-2 rounded-default border border-gray-200 overflow-x-auto lg:overflow-visible">
+      {/* this must be a generic table module */}
+      <div className="shadow-level-2 rounded-default border border-gray-200 overflow-x-auto pb-3 lg:overflow-visible">
         <table className="min-w-full text-left ">
           <thead className="bg-gray-100 text-gray-500 text-card-title tracking-wide">
             <tr>
@@ -57,17 +58,10 @@ const ProviderUI = ({ componentData }) => {
             })}
           </tbody>
         </table>
-        <div className="flex justify-center items-center h-10 gap-10 cursor-pointer">
-          <div className="text-gray-500 mr-2">Page 1 of 2</div>
-          <div className="flex items-center gap-1 text-center">
-            <button className="bg-gray-100 rounded w-10 shadow-level-1 cursor-pointer">
-              {"<"}
-            </button>
-            <div className="bg-gray-100 rounded w-10 shadow-level-1">1</div>
-            <button className="bg-gray-100 rounded w-10 shadow-level-1 cursor-pointer">
-              {">"}
-            </button>
-          </div>
+        <div className="flex justify-center items-center h-10 pt-4">
+          <button className="bg-primary-600 text-white rounded-default p-2 cursor-pointer my-2 lg:hover:brightness-110 lg:cursor-pointer">
+            Load More
+          </button>
         </div>
       </div>
     </div>

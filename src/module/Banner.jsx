@@ -7,14 +7,14 @@ const Banner = ({ componentData, intentData }) => {
       ? componentData[0].claimStatus || componentData[0].providerStatus
       : null;
 
-  const inNetWorkCount = componentData.reduce((acc, curr) => {
+  const inNetWorkCount = componentData?.reduce((acc, curr) => {
     return curr.providerStatus === "In-network" ? acc + 1 : acc;
   }, 0);
-  const outNetWorkCount = componentData.reduce((acc, curr) => {
+  const outNetWorkCount = componentData?.reduce((acc, curr) => {
     return curr.providerStatus === "Out-network" ? acc + 1 : acc;
   }, 0);
 
-  const networkArray = componentData.map((i) => i.providerStatus);
+  const networkArray = componentData?.map((i) => i.providerStatus);
   const uniqueNetworks = [...new Set(networkArray)];
 
   let statusString = "";

@@ -1,13 +1,20 @@
 import { useState } from "react";
 import DashboardUI from "../ui/DashboardUI";
-// import { recentApprovedClaimsWithLimit } from "../jsons/aiResponsesClaims";
+import {
+  allClaims,
+  approvedClaims,
+  recentApprovedClaimsWithLimit,
+} from "../jsons/aiResponsesClaims";
 import { getClaimsWithApiIntent } from "../service/claimsService";
 import { getProvidersWithIntent } from "../service/providerService";
 import {
+  allProviders,
+  limitWithSpecialityStatusLocation,
   // limitProviders,
   unsupportedQuery,
 } from "../jsons/aiResponsesProviders";
 import { DashboardAiShimmer } from "../module/Shimmer";
+import { Navigate, useNavigate } from "react-router";
 
 const DashboardPage = () => {
   const [search, setSearch] = useState("");
@@ -16,6 +23,9 @@ const DashboardPage = () => {
   const [intentData, setIntentData] = useState({});
   const [isLoading, setIsLoading] = useState(false);
   const [hasSearched, setHasSearched] = useState(false);
+
+  //routing
+  const navigate = useNavigate();
 
   const handleSearchValue = (value) => {
     setInputValue(value);
@@ -35,14 +45,20 @@ const DashboardPage = () => {
   const handleApiSearchBasedOnIntent = async (aiData) => {
     setIsLoading(true);
     try {
-      const intent = aiData.intent;
+      const { intent, filters } = aiData;
+      console.log(intent, filters);
+
       let response;
 
-      if (intent === "get_claims") {
-        response = await getClaimsWithApiIntent(aiData);
-      } else if (intent === "get_providers") {
-        response = await getProvidersWithIntent(aiData);
-      }
+      intent === "get_claims" &&
+      Object.values(filters).every((value) => value === null)
+        ? navigate("/claims")
+        : (response = await getClaimsWithApiIntent(aiData));
+
+      intent === "get_providers" &&
+      Object.values(filters).every((value) => value === null)
+        ? navigate("/provider")
+        : (response = await getProvidersWithIntent(aiData));
 
       setComponentData(response);
     } catch (error) {
@@ -63,8 +79,8 @@ const DashboardPage = () => {
     /* this result will be put into the below function 
     where i am passing static intent jsons
     */
-    setIntentData(unsupportedQuery);
-    handleApiSearchBasedOnIntent(unsupportedQuery);
+    setIntentData(allClaims);
+    handleApiSearchBasedOnIntent(allClaims);
   };
 
   const handleDefaultClick = (query) => {

@@ -1,6 +1,6 @@
 // Base - “Show providers”
 
-export const showProviders = {
+export const allProviders = {
   intent: "get_providers",
   filters: {
     speciality: null,
@@ -80,15 +80,18 @@ export const limitWithSpecialityStatus = {
   limit: 3,
 };
 
-//  Limit - “Show top 3 cardiologist with in/out network and location ” - todo check from api
+//  Limit - “Show top 3 cardiologist with In-network and location delhi ”
 
 export const limitWithSpecialityStatusLocation = {
+  // intent: "get_providers",
+  // filters: {
+  //   speciality: "cardiologist",
+  //   location: "Delhi",
+  //   providerStatus: "in-network",
+  // },
+  // limit: 3,
   intent: "get_providers",
-  filters: {
-    speciality: "cardiologist",
-    location: "Delhi",
-    providerStatus: "in-network",
-  },
+  filters: { speciality: "cardiologist", location: null, providerStatus: null },
   limit: 3,
 };
 
