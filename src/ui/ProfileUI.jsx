@@ -11,7 +11,7 @@ const ProfileUI = ({ user }) => {
             <h3 className="text-card-title text-gray-900">
               {user.displayName}
             </h3>
-            <p className="text-p text-gray-500">Member ID:51232, Jan 12 1997</p>
+            <p className="text-p text-gray-500">CRN:51232, Jan 12 1997</p>
             <div className="bg-green-100 mt-3 rounded-sm p-1 text-center">
               <p className="text-success">🟢Coverage Active</p>
             </div>
