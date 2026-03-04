@@ -1,14 +1,16 @@
-import { BASE_URL, BASE_URL_PROVIDERS } from "../constant/common";
+import { BASE_URL_PROVIDERS } from "../constant/common";
 
 export const getProviders = async () => {
-  const data = await (
-    await fetch(`${BASE_URL}/providers-data`, {
-      method: "GET",
-      headers: { "content-type": "application/json" },
-    })
-  ).json();
+  const data = await fetch(`${BASE_URL_PROVIDERS}`, {
+    method: "GET",
+    headers: { "content-type": "application/json" },
+  });
 
-  return data;
+  if (!data.ok) {
+    throw new Error(data.status);
+  }
+
+  return data.json();
 };
 
 export const getProvidersWithIntent = async ({

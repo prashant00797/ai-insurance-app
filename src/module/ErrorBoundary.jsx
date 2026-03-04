@@ -76,11 +76,11 @@ export const NotFoundUI = () => {
 
 export const ServiceFailure = () => {
   return (
-    <div className="min-h-screen bg-primary-100 flex items-center justify-center">
+    <div className="min-h-screen flex items-center justify-center">
       <div className="flex flex-col items-center justify-center p-2">
         <img
           src={serviceFailure}
-          alt="data not loaded"
+          alt="data not found"
           className="w-[70%] lg:w-[50%]"
         />
         <h1 className="text-primary-600 text-2xl font-extrabold text-center">

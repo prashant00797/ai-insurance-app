@@ -1,5 +1,5 @@
 const ClaimsUI = ({ componentData }) => {
-  const claimsStatus = componentData.map((s) => s.claimStatus);
+  const claimsStatus = componentData?.map((s) => s.claimStatus);
   const statusStyles = {
     approved: "bg-green-100 text-success",
     pending: "bg-yellow-100 text-warning",

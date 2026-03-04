@@ -2,11 +2,12 @@ import { useEffect, useState } from "react";
 import ProviderUI from "../ui/ProviderUI";
 import { getProviders } from "../service/providerService";
 import { ClaimProviderPageShimmer } from "../module/Shimmer";
-import { NoData } from "../module/ErrorBoundary";
+import { NoData, ServiceFailure } from "../module/ErrorBoundary";
 
 const ProviderPage = () => {
-  const [componentData, setComponenetData] = useState(null);
+  const [componentData, setComponenetData] = useState([]);
   const [isLoading, setIsLoading] = useState(false);
+  const [error, setError] = useState(false);
 
   const fetchComponentData = async () => {
     try {
@@ -14,8 +15,8 @@ const ProviderPage = () => {
       const response = await getProviders();
 
       setComponenetData(response);
-    } catch (error) {
-      console.error(error);
+    } catch {
+      setError(true);
     } finally {
       setIsLoading(false);
     }
@@ -27,7 +28,9 @@ const ProviderPage = () => {
 
   return isLoading ? (
     <ClaimProviderPageShimmer />
-  ) : componentData === null ? null : componentData.length === 0 ? (
+  ) : error ? (
+    <ServiceFailure />
+  ) : componentData.length === 0 ? (
     <NoData type="providers" />
   ) : (
     <main className="flex-1  mt-10 pb-1=24 lg:pb-0">
