@@ -1,4 +1,4 @@
-const ProfileUI = () => {
+const ProfileUI = ({ user }) => {
   return (
     <div className="p-10">
       <div className="mb-2">
@@ -8,7 +8,9 @@ const ProfileUI = () => {
         <div className="flex items-center gap-10">
           <div className="rounded-full bg-primary-600 w-25 h-25"></div>
           <div className="flex flex-col">
-            <h3 className="text-card-title text-gray-900">Prashant Nath</h3>
+            <h3 className="text-card-title text-gray-900">
+              {user.displayName}
+            </h3>
             <p className="text-p text-gray-500">Member ID:51232, Jan 12 1997</p>
             <div className="bg-green-100 mt-3 rounded-sm p-1 text-center">
               <p className="text-success">🟢Coverage Active</p>

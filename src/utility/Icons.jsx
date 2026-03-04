@@ -43,3 +43,11 @@ export const DashboardIcon = ({ className }) => {
     </svg>
   );
 };
+
+export const LogoutIcon = ({ className }) => {
+  return (
+    <svg viewBox="0 0 24 24" fill="currentColor" className={className}>
+      <path d="M16 17v-3H9v-4h7V7l5 5-5 5zM3 3h9v2H5v14h7v2H3V3z" />
+    </svg>
+  );
+};

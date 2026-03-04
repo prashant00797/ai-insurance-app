@@ -8,18 +8,21 @@ import { RouterProvider } from "react-router";
 
 //Global listener component
 const Root = () => {
+  //state to control the flickering when between the time frame between app loading --> user null TO on auth change fire
   const [authCheck, setAuthCheck] = useState(true);
+
   const dispatch = useDispatch();
 
   //global auth observer
   useEffect(() => {
     const unsubscribe = onAuthStateChanged(auth, (user) => {
       if (user) {
-        const { uid, email } = user;
+        const { uid, email, displayName } = user;
         dispatch(
           addUser({
             uid: uid,
             email: email,
+            displayName: displayName,
           }),
         );
       } else {
