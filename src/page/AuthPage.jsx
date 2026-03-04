@@ -11,6 +11,7 @@ const AuthPage = () => {
     pwd: "",
   });
   const [errorMessage, setErrorMessage] = useState("");
+  const [isLoading, setIsLoading] = useState(false);
 
   const handleMode = (newMode) => {
     setMode(newMode);
@@ -27,22 +28,24 @@ const AuthPage = () => {
   //
   const handleSignup = async ({ email, pwd, fname }) => {
     try {
-      let response = await signUpUserService(email, pwd, fname);
-      console.log(response, "signup");
+      setIsLoading(true);
+      await signUpUserService(email, pwd, fname);
     } catch (error) {
-      setErrorMessage(error.message);
-      console.log(error.message);
+      setErrorMessage(error);
+    } finally {
+      setIsLoading(false);
     }
   };
 
   //
   const handleLogin = async ({ email, pwd }) => {
     try {
-      let response = await logInUserService(email, pwd);
-      console.log(response, "login");
+      setIsLoading(true);
+      await logInUserService(email, pwd);
     } catch (error) {
-      setErrorMessage(error.message);
-      console.log(error);
+      setErrorMessage(error);
+    } finally {
+      setIsLoading(false);
     }
   };
 
@@ -68,6 +71,7 @@ const AuthPage = () => {
         handleOnChange={handleOnChange}
         formData={formData}
         errorMessage={errorMessage}
+        isLoading={isLoading}
       />
     </>
   );

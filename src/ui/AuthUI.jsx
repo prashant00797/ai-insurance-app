@@ -1,5 +1,6 @@
 import bgImage from "../assets/bgImage.webp";
 import logo from "../assets/logo.svg";
+import { AuthErrorMessage } from "../module/ErrorBoundary";
 const AuthUI = ({
   mode,
   handleMode,
@@ -7,6 +8,7 @@ const AuthUI = ({
   handleOnChange,
   formData,
   errorMessage,
+  isLoading,
 }) => {
   return (
     <div
@@ -144,11 +146,14 @@ const AuthUI = ({
                   value={formData.pwd}
                 />
               </div>
-              {errorMessage && (
+              {errorMessage && <AuthErrorMessage errorMessage={errorMessage} />}
+              {isLoading && (
                 <div className=" mb-7">
-                  <a className="text-danger text-caption mb-3 ">
-                    {errorMessage}
-                  </a>
+                  <p className="text-primary-600 animate-pulse">
+                    {mode === "Login"
+                      ? "Signing you in..."
+                      : "Creating your account..."}
+                  </p>
                 </div>
               )}
             </div>

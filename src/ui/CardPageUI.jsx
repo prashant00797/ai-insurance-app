@@ -1,5 +1,5 @@
 import Banner from "../module/Banner";
-import NotFoundUI from "./NotFoundUI";
+import { NotFoundUI } from "../module/ErrorBoundary";
 
 const CardPageUI = ({ componentData, intentData }) => {
   //styles

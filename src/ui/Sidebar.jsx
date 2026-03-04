@@ -1,5 +1,5 @@
 import logo from "../assets/logo.svg";
-import { NavLink } from "react-router";
+import { NavLink } from "react-router-dom";
 import {
   ClaimsIcon,
   ProviderIcon,

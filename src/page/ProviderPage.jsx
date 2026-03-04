@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 import ProviderUI from "../ui/ProviderUI";
 import { getProviders } from "../service/providerService";
 import { ClaimProviderPageShimmer } from "../module/Shimmer";
-import NoData from "../module/noData";
+import { NoData } from "../module/ErrorBoundary";
 
 const ProviderPage = () => {
   const [componentData, setComponenetData] = useState(null);

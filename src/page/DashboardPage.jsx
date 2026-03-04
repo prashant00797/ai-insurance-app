@@ -1,20 +1,12 @@
 import { useState } from "react";
 import DashboardUI from "../ui/DashboardUI";
-import {
-  allClaims,
-  approvedClaims,
-  recentApprovedClaimsWithLimit,
-} from "../jsons/aiResponsesClaims";
+import { allClaims } from "../jsons/aiResponsesClaims";
 import { getClaimsWithApiIntent } from "../service/claimsService";
 import { getProvidersWithIntent } from "../service/providerService";
-import {
-  allProviders,
-  limitWithSpecialityStatusLocation,
-  // limitProviders,
-  unsupportedQuery,
-} from "../jsons/aiResponsesProviders";
+
+("../jsons/aiResponsesProviders");
 import { DashboardAiShimmer } from "../module/Shimmer";
-import { Navigate, useNavigate } from "react-router";
+import { Navigate, useNavigate } from "react-router-dom";
 
 const DashboardPage = () => {
   const [search, setSearch] = useState("");

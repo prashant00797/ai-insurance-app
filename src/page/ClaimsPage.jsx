@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 import ClaimsUI from "../ui/ClaimsUI";
 import { getClaims } from "../service/claimsService";
 import { ClaimProviderPageShimmer } from "../module/Shimmer";
-import NoData from "../module/noData";
+import { NoData } from "../module/ErrorBoundary";
 
 const ClaimsPage = () => {
   const [componentData, setComponentData] = useState(null);

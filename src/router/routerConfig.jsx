@@ -1,4 +1,4 @@
-import { createBrowserRouter } from "react-router";
+import { createBrowserRouter } from "react-router-dom";
 import AuthPage from "../page/AuthPage.jsx";
 import ProtectedPages from "../page/ProtectedPages.jsx";
 import DashboardPage from "../page/DashboardPage.jsx";
@@ -7,6 +7,7 @@ import ProviderPage from "../page/ProviderPage.jsx";
 import ProfilePage from "../page/ProfilePage.jsx";
 import ProtectedRoute from "./ProtectedRoute.jsx";
 import PublicRoute from "./PublicRoute.jsx";
+import { InvalidUrl } from "../module/ErrorBoundary.jsx";
 
 const appRoutes = createBrowserRouter([
   //public routes
@@ -17,7 +18,7 @@ const appRoutes = createBrowserRouter([
         <AuthPage />
       </PublicRoute>
     ),
-    errorElement: <h1>..oops page not found 🚀🚀🚀🚀</h1>,
+    errorElement: <InvalidUrl />,
   },
   //protected routes
   {
@@ -27,7 +28,7 @@ const appRoutes = createBrowserRouter([
         <ProtectedPages />
       </ProtectedRoute>
     ),
-    errorElement: <h1>..oops page not found 🚀🚀🚀🚀</h1>,
+    errorElement: <InvalidUrl />,
     children: [
       {
         index: true,

@@ -4,7 +4,8 @@ import { useDispatch } from "react-redux";
 import { auth } from "./utility/firbase";
 import { addUser, removeUser } from "./store/userSlice";
 import appRoutes from "./router/routerConfig";
-import { RouterProvider } from "react-router";
+import { RouterProvider } from "react-router-dom";
+import { GlobalLoader } from "./module/ErrorBoundary";
 
 //Global listener component
 const Root = () => {
@@ -35,7 +36,7 @@ const Root = () => {
     return () => unsubscribe();
   }, [dispatch]);
 
-  if (authCheck) return <div>....loading</div>;
+  if (authCheck) return <GlobalLoader />;
 
   return <RouterProvider router={appRoutes} />;
 };
