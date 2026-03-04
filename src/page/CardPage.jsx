@@ -2,7 +2,7 @@ import CardPageUI from "../ui/CardPageUI";
 
 const CardPage = ({ componentData, intentData }) => {
   return (
-    <div className=" mt-10 pb-24 lg:pb-0">
+    <div className="pb-24 w-full lg:pb-0">
       <CardPageUI componentData={componentData} intentData={intentData} />
     </div>
   );

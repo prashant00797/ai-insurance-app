@@ -16,9 +16,9 @@ const DashboardUI = ({
     <>
       <BackUI onBack={onBack} hasSearched={hasSearched} />
       <div
-        className={`px-6 pt-6 pb-10 flex flex-col items-center ${hasSearched ? "gap-1.5" : "gap-20"}`}
+        className={`px-6 pt-6 lg:pt-4 pb-10 flex flex-col items-center ${hasSearched ? "gap-1.5" : "gap-20"}`}
       >
-        <div className=" flex gap-2 items-center w-full max-w-2xl mt-6">
+        <div className=" flex gap-2 items-center w-full max-w-2xl mt-10 lg:mt-0 ">
           <input
             type="text"
             name="ai-search"

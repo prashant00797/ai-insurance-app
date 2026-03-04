@@ -1,12 +1,13 @@
 import { useState } from "react";
 import DashboardUI from "../ui/DashboardUI";
-import { allClaims } from "../jsons/aiResponsesClaims";
+import { approvedClaims } from "../jsons/aiResponsesClaims";
 import { getClaimsWithApiIntent } from "../service/claimsService";
 import { getProvidersWithIntent } from "../service/providerService";
 
 ("../jsons/aiResponsesProviders");
 import { DashboardAiShimmer } from "../module/Shimmer";
-import { Navigate, useNavigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
+import { ServiceFailure } from "../module/ErrorBoundary";
 
 const DashboardPage = () => {
   const [search, setSearch] = useState("");
@@ -15,6 +16,7 @@ const DashboardPage = () => {
   const [intentData, setIntentData] = useState({});
   const [isLoading, setIsLoading] = useState(false);
   const [hasSearched, setHasSearched] = useState(false);
+  const [error, setError] = useState(false);
 
   //routing
   const navigate = useNavigate();
@@ -42,19 +44,27 @@ const DashboardPage = () => {
 
       let response;
 
-      intent === "get_claims" &&
-      Object.values(filters).every((value) => value === null)
-        ? navigate("/claims")
-        : (response = await getClaimsWithApiIntent(aiData));
+      const noFilters = Object.values(filters).every((value) => value === null);
 
-      intent === "get_providers" &&
-      Object.values(filters).every((value) => value === null)
-        ? navigate("/provider")
-        : (response = await getProvidersWithIntent(aiData));
+      if (intent === "get_claims") {
+        if (noFilters) {
+          navigate("/claims");
+        } else {
+          response = await getClaimsWithApiIntent(aiData);
+        }
+      }
+
+      if (intent === "get_providers") {
+        if (noFilters) {
+          navigate("/provider");
+        } else {
+          response = await getProvidersWithIntent(aiData);
+        }
+      }
 
       setComponentData(response);
-    } catch (error) {
-      console.error(error);
+    } catch {
+      setError(true);
     } finally {
       setIsLoading(false);
     }
@@ -71,8 +81,8 @@ const DashboardPage = () => {
     /* this result will be put into the below function 
     where i am passing static intent jsons
     */
-    setIntentData(allClaims);
-    handleApiSearchBasedOnIntent(allClaims);
+    setIntentData(approvedClaims);
+    handleApiSearchBasedOnIntent(approvedClaims);
   };
 
   const handleDefaultClick = (query) => {
@@ -94,6 +104,8 @@ const DashboardPage = () => {
     <main className="flex-1 lg:pb-0">
       {isLoading ? (
         <DashboardAiShimmer />
+      ) : error ? (
+        <ServiceFailure />
       ) : (
         <DashboardUI
           search={search}

@@ -19,7 +19,7 @@ const CardPageUI = ({ componentData, intentData }) => {
   }
 
   return (
-    <div className="flex flex-col items-center lg: flex-none  p-7">
+    <div className="flex flex-col items-center lg: flex-none ">
       {intentData?.intent === "unknown" ? (
         <NotFoundUI />
       ) : (
@@ -27,14 +27,11 @@ const CardPageUI = ({ componentData, intentData }) => {
           <Banner componentData={componentData} intentData={intentData} />
 
           {/* Card Start - not creating a separate module but it should be */}
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-5 w-full p-2">
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-5 w-full p-2 max-h-75 overflow-y-scroll [scrollbar-width:none] lg:[scrollbar-width:auto] pb-7.5 lg:max-h-120 ">
             {/* guard check ? */}
             {componentData?.map((item) => {
               return (
-                <div
-                  key={item.id}
-                  className="shadow-level-2 w-full lg:w-[30vmax]"
-                >
+                <div key={item.id} className="shadow-level-2 w-full">
                   <div className="flex justify-between p-2 ">
                     <div className="flex flex-col gap-2">
                       <h3 className="text-gray-900 text-card-title">

@@ -27,9 +27,9 @@ const ClaimsUI = ({ componentData }) => {
         </div>
       </div>
       {/* this must be a generic table module */}
-      <div className="shadow-level-2 rounded-default border border-gray-200 overflow-x-auto pb-3 lg:overflow-visible">
+      <div className="shadow-level-2 rounded-default border border-gray-200 overflow-x-auto pb-3 [scrollbar-width:none] lg:overflow-y-scroll">
         <table className="min-w-full text-left ">
-          <thead className="bg-gray-100 text-gray-500 text-card-title tracking-wide">
+          <thead className="bg-gray-100 text-gray-500 text-card-title tracking-wide sticky top-0">
             <tr>
               <th className="px-4 py-2 font-semibold whitespace-nowrap">
                 Claim ID
@@ -64,11 +64,11 @@ const ClaimsUI = ({ componentData }) => {
             })}
           </tbody>
         </table>
-        <div className="flex justify-center items-center h-10 pt-4">
-          <button className="bg-primary-600 text-white rounded-default p-2 cursor-pointer lg:hover:brightness-110 lg:cursor-pointer">
-            Load More
-          </button>
-        </div>
+      </div>
+      <div className="flex justify-center items-center h-10 pt-4">
+        <button className="bg-primary-600 text-white rounded-default p-2 cursor-pointer lg:hover:brightness-110 lg:cursor-pointer">
+          Load More
+        </button>
       </div>
     </div>
   );

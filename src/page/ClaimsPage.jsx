@@ -34,7 +34,7 @@ const ClaimsPage = () => {
   ) : componentData.length === 0 ? (
     <NoData type="claims" />
   ) : (
-    <main className="flex-1  mt-10  pb-24 lg:pb-0">
+    <main className="flex-1 pb-24 lg:pb-0">
       <ClaimsUI componentData={componentData} />
     </main>
   );

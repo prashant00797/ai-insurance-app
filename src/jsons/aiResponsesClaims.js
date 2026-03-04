@@ -38,16 +38,6 @@ export const recentDeniedClaims = {
   sort: "recent",
 };
 
-//No filter - show my claims
-export const showClaims = {
-  intent: "get_claims",
-  filters: {
-    status: null,
-  },
-  limit: null,
-  sort: null,
-};
-
 //With limit and sort -  show my first 3 approved claims
 export const oldestApprovedClaimsWithLimit = {
   intent: "get_claims",

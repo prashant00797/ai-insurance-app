@@ -33,7 +33,7 @@ const ProviderPage = () => {
   ) : componentData.length === 0 ? (
     <NoData type="providers" />
   ) : (
-    <main className="flex-1  mt-10 pb-1=24 lg:pb-0">
+    <main className="flex-1 pb-1=24 lg:pb-0 ">
       <ProviderUI componentData={componentData} />
     </main>
   );

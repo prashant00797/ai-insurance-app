@@ -33,7 +33,7 @@ const Banner = ({ componentData, intentData }) => {
   };
 
   return (
-    <div className="lg:w-full shadow-level-1 bg-primary-100 lg:h-20 p-2 rounded-default mb-15 ">
+    <div className="w-full lg:w-[80%] shadow-level-1 bg-primary-100 lg:h-20 p-2 rounded-default mb-10 mt-5 ">
       <div className="flex flex-col lg:flex-row items-baseline gap-1.5 mb-2">
         <p className="text-gray-900 text-card-title font-semibold">
           {` ${statusString}`}
