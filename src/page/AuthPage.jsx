@@ -2,6 +2,7 @@ import AuthUI from "../ui/AuthUI";
 import { useState } from "react";
 import checkValidation from "../utility/validate";
 import { logInUserService, signUpUserService } from "../service/firebaseApi";
+import { useNavigate } from "react-router";
 const AuthPage = () => {
   const [mode, setMode] = useState("Login");
   const [formData, setFormData] = useState({
@@ -11,6 +12,7 @@ const AuthPage = () => {
     pwd: "",
   });
   const [errorMessage, setErrorMessage] = useState("");
+  const navigate = useNavigate();
 
   const handleMode = (newMode) => {
     setMode(newMode);
@@ -29,6 +31,7 @@ const AuthPage = () => {
     try {
       let response = await signUpUserService(email, pwd);
       console.log(response, "signup");
+      navigate("/");
     } catch (error) {
       setErrorMessage(error.message);
       console.log(error.message);
@@ -40,6 +43,7 @@ const AuthPage = () => {
     try {
       let response = await logInUserService(email, pwd);
       console.log(response, "login");
+      navigate("/");
     } catch (error) {
       setErrorMessage(error.message);
       console.log(error);

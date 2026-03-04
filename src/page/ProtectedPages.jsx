@@ -1,7 +1,7 @@
 import { Outlet } from "react-router";
 import Sidebar from "../ui/Sidebar";
 
-const ProtectedLayout = () => {
+const ProtectedPages = () => {
   return (
     <div className="h-screen flex flex-col lg:flex-row overflow-hidden">
       <Sidebar />
@@ -10,4 +10,4 @@ const ProtectedLayout = () => {
   );
 };
 
-export default ProtectedLayout;
+export default ProtectedPages;
