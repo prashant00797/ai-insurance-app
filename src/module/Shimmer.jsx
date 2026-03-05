@@ -9,7 +9,7 @@ export const ClaimProviderPageShimmer = () => {
         <div className="bg-gray-200  rounded-default   h-10 text-center p-2 lg:w-[50%] animate-pulse"></div>
       </div>
 
-      <div className="shadow-level-2 rounded-default w-full h-200 lg:h-[80%]  bg-gray-200 animate-pulse"></div>
+      <div className="shadow-level-2 rounded-default w-full h-85 lg:h-[80%]  bg-gray-200 animate-pulse"></div>
     </div>
   );
 };
