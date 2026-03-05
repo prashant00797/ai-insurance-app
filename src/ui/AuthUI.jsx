@@ -12,15 +12,15 @@ const AuthUI = ({
 }) => {
   return (
     <div
-      className=" min-h-screen bg-cover bg-center"
+      className=" min-h-screen bg-cover bg-center pb-2"
       style={{ backgroundImage: `url(${bgImage})` }}
     >
-      <div className="p-2.5">
+      <div className="pl-9.5 mb-6">
         <img src={logo} alt="insureAI" />
       </div>
-      <div className="flex flex-col p-10 justify-center items-center lg:flex-row lg:justify-around lg:items-start lg:pt-20 w-full gap-20">
-        <div id="intro" className="flex flex-col gap-3 pt-30">
-          <h1 className="text-primary-600 text-page-title break-after-all">
+      <div className="flex flex-col justify-center items-center  lg:flex-row lg:justify-center gap-10 min-h-[85vh]">
+        <div id="intro" className="flex flex-col gap-3 px-10">
+          <h1 className="text-primary-600 text-page-title text-center break-after-all">
             Streamline Your Health Insurance with AI
           </h1>
           <ul>
@@ -37,7 +37,7 @@ const AuthUI = ({
         </div>
         <div
           id="auth-form"
-          className=" w-90 bg-white rounded-default shadow-level-2 p-7"
+          className=" w-90 lg:w-[30vmax] h-full bg-white rounded-default shadow-level-2 p-7"
         >
           <div
             id="login-signup"
