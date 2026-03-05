@@ -117,20 +117,26 @@ export const ServiceFailure = (onBack, hasSearched) => {
   );
 };
 
-export const AuthErrorMessage = (msg) => {
-  const { code } = msg.errorMessage;
-
+export const AuthErrorMessage = ({ errorMessage }) => {
   const errorString = {
     "auth/invalid-credential": "Invalid email or password.",
     "auth/email-already-in-use": "Email is already registered.",
+    "auth/weak-password":
+      "Password is too weak. Please choose a stronger password.",
     "auth/network-request-failed": "Network error. Please try again.",
   };
 
+  // Validation error (string)
+  if (typeof errorMessage === "string") {
+    return <p className="text-danger text-caption mb-3">{errorMessage}</p>;
+  }
+
+  // Firebase error
+  const code = errorMessage?.code;
+
   return (
-    <div className=" mb-7">
-      <a className="text-danger text-caption mb-3 ">
-        {errorString[code] || "Something Went Wrong. Please try again later."}
-      </a>
-    </div>
+    <p className="text-danger text-caption mb-3">
+      {errorString[code] || "Something went wrong. Please try again later."}
+    </p>
   );
 };

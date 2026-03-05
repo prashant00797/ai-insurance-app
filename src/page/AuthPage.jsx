@@ -49,16 +49,21 @@ const AuthPage = () => {
     }
   };
 
-  const handleSumbit = (e) => {
+  const handleSumbit = async (e) => {
     e.preventDefault();
     const message = checkValidation(formData, mode);
-    setErrorMessage(message);
-    if (message) return;
+
+    if (message) {
+      setErrorMessage(message);
+      return;
+    }
+
+    setErrorMessage("");
 
     if (mode === "SignUp") {
-      handleSignup(formData);
+      await handleSignup(formData);
     } else {
-      handleLogin(formData);
+      await handleLogin(formData);
     }
   };
 
