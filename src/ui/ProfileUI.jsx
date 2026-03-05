@@ -5,7 +5,7 @@ const ProfileUI = ({ user }) => {
         <h1 className="text-page-title text-gray-900 font-semibold">Profile</h1>
       </div>
       <div className="shadow-level-2 w-full p-10">
-        <div className="flex items-center gap-10">
+        <div className="flex flex-col lg:flex-row items-center gap-10">
           <div className="rounded-full bg-primary-600 w-25 h-25"></div>
           <div className="flex flex-col">
             <h3 className="text-card-title text-gray-900">

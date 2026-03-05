@@ -15,10 +15,10 @@ const AuthUI = ({
       className=" min-h-screen bg-cover bg-center pb-2"
       style={{ backgroundImage: `url(${bgImage})` }}
     >
-      <div className="pl-9.5 mb-6">
+      <div className="pl-4 mb-6">
         <img src={logo} alt="insureAI" />
       </div>
-      <div className="flex flex-col justify-center items-center  lg:flex-row lg:justify-center gap-10 min-h-[85vh]">
+      <div className="flex flex-col justify-center items-center  lg:flex-row lg:justify-center gap-10 min-h-[90vh]">
         <div id="intro" className="flex flex-col gap-3 px-10">
           <h1 className="text-primary-600 text-page-title text-center break-after-all">
             Streamline Your Health Insurance with AI

@@ -11,7 +11,7 @@ const Label = ({ componentData, status, title }) => {
 
   return (
     <div className="gap-5 mb-5 grid grid-cols-2 lg:flex lg:items-center lg:gap-20">
-      <div className="bg-primary-600 text-white rounded-default w-full h-10 text-center p-2">
+      <div className="bg-primary-600 text-white rounded-default w-full h-10 text-center p-2 whitespace-nowrap">
         {`${componentData.length} Total ${title}`}
       </div>
       {__status.map((s) => {

@@ -39,13 +39,13 @@ const DashboardUI = ({
         </div>
 
         {!hasSearched ? (
-          <div className="w-[60vw]  lg:h-65 shadow-level-2">
+          <div className="w-[95vw] lg:w-[60vw]  lg:h-65 shadow-level-2">
             <div className="flex justify-center items-center mb-3">
               <div id="bot-img">
                 <img src={botImage} alt="bot" className="w-40" />
               </div>
               <div>
-                <h1 className="text-page-title font-semibold text-gray-900">
+                <h1 className="text-page-title font-semibold text-center text-gray-900 lg:whitespace-nowrap">
                   How can i help you today?
                 </h1>
               </div>
