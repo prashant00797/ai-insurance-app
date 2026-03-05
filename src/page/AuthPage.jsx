@@ -63,17 +63,15 @@ const AuthPage = () => {
   };
 
   return (
-    <>
-      <AuthUI
-        mode={mode}
-        handleMode={handleMode}
-        handleSumbit={handleSumbit}
-        handleOnChange={handleOnChange}
-        formData={formData}
-        errorMessage={errorMessage}
-        isLoading={isLoading}
-      />
-    </>
+    <AuthUI
+      mode={mode}
+      handleMode={handleMode}
+      handleSumbit={handleSumbit}
+      handleOnChange={handleOnChange}
+      formData={formData}
+      errorMessage={errorMessage}
+      isLoading={isLoading}
+    />
   );
 };
 

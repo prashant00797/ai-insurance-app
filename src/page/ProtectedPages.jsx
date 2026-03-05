@@ -1,19 +1,25 @@
 import { Outlet } from "react-router-dom";
 import Sidebar from "../ui/Sidebar";
 import { logOutUserService } from "../service/firebaseApi";
+import { useState } from "react";
+import { ServiceFailure } from "../module/ErrorBoundary";
 
 const ProtectedPages = () => {
+  const [error, setError] = useState(false);
   //signout
   const handleSignOut = async () => {
     try {
-      const res = await logOutUserService();
-      console.log(res);
-    } catch (error) {
-      console.log(error.message);
+      await logOutUserService();
+    } catch {
+      setError(true);
     }
   };
 
-  return (
+  return error ? (
+    <>
+      <ServiceFailure />
+    </>
+  ) : (
     <div className="h-screen flex flex-col lg:flex-row overflow-hidden">
       <Sidebar handleSignOut={handleSignOut} />
       <Outlet />

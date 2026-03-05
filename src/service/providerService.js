@@ -29,12 +29,21 @@ export const getProvidersWithIntent = async ({
     url.searchParams.append("providerStatus", providerStatus);
   }
 
-  const data = await (
-    await fetch(url.toString(), {
-      method: "GET",
-      headers: { "content-type": "application/json" },
-    })
-  ).json();
+  const response = await fetch(url.toString(), {
+    method: "GET",
+    headers: { "content-type": "application/json" },
+  });
+
+  //404 is a value
+  if (response.status === 404) {
+    return [];
+  }
+
+  if (!response.ok) {
+    throw new Error(response.status);
+  }
+
+  const data = await response.json();
 
   let finalData = [...data];
 

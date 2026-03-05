@@ -7,7 +7,11 @@ import { NoData, ServiceFailure } from "../module/ErrorBoundary";
 const ClaimsPage = () => {
   const [componentData, setComponentData] = useState([]);
   const [isLoading, setIsLoading] = useState(false);
+  const [hasFetched, setHasFetched] = useState(false);
   const [error, setError] = useState(false);
+  const [currentPage, setCurrentPage] = useState(0);
+
+  const PAGE_SIZE = 5;
 
   const fetchComponentData = async () => {
     setIsLoading(true);
@@ -15,12 +19,21 @@ const ClaimsPage = () => {
     try {
       const response = await getClaims();
       setComponentData(response);
-      console.log(response);
     } catch {
       setError(true);
     } finally {
       setIsLoading(false);
+      setHasFetched(true);
     }
+  };
+
+  const totalData = componentData.length;
+  const totalPages = Math.ceil(totalData / PAGE_SIZE);
+  const start = currentPage * PAGE_SIZE;
+  const end = start + PAGE_SIZE;
+
+  const handlePagination = (n) => {
+    setCurrentPage(n);
   };
 
   useEffect(() => {
@@ -31,11 +44,18 @@ const ClaimsPage = () => {
     <ClaimProviderPageShimmer />
   ) : error ? (
     <ServiceFailure />
-  ) : componentData.length === 0 ? (
+  ) : hasFetched && componentData?.length === 0 ? (
     <NoData type="claims" />
   ) : (
     <main className="flex-1 pb-24 lg:pb-0">
-      <ClaimsUI componentData={componentData} />
+      <ClaimsUI
+        componentData={componentData}
+        start={start}
+        end={end}
+        handlePagination={handlePagination}
+        currentPage={currentPage}
+        totalPages={totalPages}
+      />
     </main>
   );
 };

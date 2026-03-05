@@ -1,4 +1,11 @@
-const ProviderUI = ({ componentData }) => {
+const ProviderUI = ({
+  componentData,
+  start,
+  end,
+  handlePagination,
+  currentPage,
+  totalPages,
+}) => {
   const providerStatus = componentData.map((s) => s.providerStatus);
 
   const statusStyles = {
@@ -38,7 +45,7 @@ const ProviderUI = ({ componentData }) => {
             </tr>
           </thead>
           <tbody className="divide-y divide-gray-200">
-            {componentData.map((item) => {
+            {componentData.slice(start, end).map((item) => {
               return (
                 <tr key={item.id} className="hover:bg-gray-50">
                   <td className="px-4 py-2 font-regular whitespace-nowrap">
@@ -59,9 +66,21 @@ const ProviderUI = ({ componentData }) => {
           </tbody>
         </table>
       </div>
-      <div className="flex justify-center items-center h-10 pt-4">
-        <button className="bg-primary-600 text-white rounded-default p-2 cursor-pointer my-2 lg:hover:brightness-110 lg:cursor-pointer">
-          Load More
+      <div className="flex justify-center items-center h-10 pt-4 gap-2">
+        <p className="text-primary-500 font-semibold">{`Page ${currentPage + 1} of ${totalPages}`}</p>
+        <button
+          onClick={() => handlePagination(currentPage - 1)}
+          disabled={currentPage === 0}
+          className="bg-primary-600 text-white rounded-default p-2 cursor-pointer lg:hover:brightness-110 lg:cursor-pointer lg:transition lg:duration-300 disabled:bg-primary-100 disabled:cursor-not-allowed disabled:text-gray-500 disabled:hover:brightness-100 "
+        >
+          ⬅️
+        </button>
+        <button
+          onClick={() => handlePagination(currentPage + 1)}
+          disabled={currentPage === totalPages - 1}
+          className="bg-primary-600 text-white rounded-default p-2 cursor-pointer lg:hover:brightness-110 lg:cursor-pointer lg:transition lg:duration-300 disabled:bg-primary-100 disabled:cursor-not-allowed disabled:text-gray-500 disabled:hover:brightness-100 "
+        >
+          ➡️
         </button>
       </div>
     </div>

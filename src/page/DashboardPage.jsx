@@ -1,13 +1,11 @@
 import { useState } from "react";
 import DashboardUI from "../ui/DashboardUI";
-import { approvedClaims } from "../jsons/aiResponsesClaims";
 import { getClaimsWithApiIntent } from "../service/claimsService";
 import { getProvidersWithIntent } from "../service/providerService";
-
-("../jsons/aiResponsesProviders");
 import { DashboardAiShimmer } from "../module/Shimmer";
 import { useNavigate } from "react-router-dom";
-import { ServiceFailure } from "../module/ErrorBoundary";
+import { NoData, ServiceFailure } from "../module/ErrorBoundary";
+import { getUserQuery } from "../service/aiService";
 
 const DashboardPage = () => {
   const [search, setSearch] = useState("");
@@ -21,45 +19,68 @@ const DashboardPage = () => {
   //routing
   const navigate = useNavigate();
 
+  //search functions below--->
+
+  //input value typed in
   const handleSearchValue = (value) => {
     setInputValue(value);
   };
 
+  //manual search
   const handleSearchClick = () => {
     //guard 1 issue
     if (!inputValue.trim()) return;
 
     setHasSearched(true);
     setSearch(inputValue);
-
-    //main ai api call
-    callGemini(inputValue);
+    handleSearchFlow(inputValue);
   };
 
-  const handleApiSearchBasedOnIntent = async (aiData) => {
-    setIsLoading(true);
+  //default search
+  const handleDefaultClick = (query) => {
+    //guard 3
+    setHasSearched(true);
+    setInputValue(query);
+    setSearch(query);
+    handleSearchFlow(query);
+  };
+
+  //main check to gemini api and based on intent getting send result to mockapi.io
+  const handleSearchFlow = async (query) => {
     try {
+      setIsLoading(true);
+
+      //AI intent fetch
+      const aiData = await getUserQuery(query);
+      setIntentData(aiData);
+
       const { intent, filters } = aiData;
-      console.log(intent, filters);
+
+      const noFilters =
+        !filters || Object.values(filters).every((v) => v === null);
 
       let response;
 
-      const noFilters = Object.values(filters).every((value) => value === null);
-
+      //decide service call based on intent
       if (intent === "get_claims") {
         if (noFilters) {
           navigate("/claims");
+          // guard check
+          return;
         } else {
           response = await getClaimsWithApiIntent(aiData);
         }
-      }
-
-      if (intent === "get_providers") {
+      } else if (intent === "get_providers") {
         if (noFilters) {
           navigate("/provider");
+          // guard check
+          return;
         } else {
           response = await getProvidersWithIntent(aiData);
         }
+      } else if (intent === "unknown") {
+        setComponentData([]);
+        return;
       }
 
       setComponentData(response);
@@ -70,27 +91,6 @@ const DashboardPage = () => {
     }
   };
 
-  //TODO - const api call for aiService
-  const callGemini = (query) => {
-    console.log(query, "DashboardPage");
-
-    // const result = await interpretQuery(search);
-
-    // we need to extract the intent obj and set it with a state variable and send it to handleApiSearchBasedOnIntent
-
-    /* this result will be put into the below function 
-    where i am passing static intent jsons
-    */
-    setIntentData(approvedClaims);
-    handleApiSearchBasedOnIntent(approvedClaims);
-  };
-
-  const handleDefaultClick = (query) => {
-    //guard 3
-    setHasSearched(true);
-    callGemini(query);
-  };
-
   //back resetting state - guard two
   const onBack = () => {
     setSearch("");
@@ -98,6 +98,7 @@ const DashboardPage = () => {
     setComponentData([]);
     setIntentData({});
     setHasSearched(false);
+    setError(false);
   };
 
   return (
@@ -105,7 +106,15 @@ const DashboardPage = () => {
       {isLoading ? (
         <DashboardAiShimmer />
       ) : error ? (
-        <ServiceFailure />
+        <ServiceFailure onBack={onBack} hasSearched={hasSearched} />
+      ) : hasSearched && !isLoading && componentData?.length === 0 ? (
+        <NoData
+          type={intentData.intent}
+          onBack={onBack}
+          hasSearched={hasSearched}
+          search={search}
+          intentData={intentData}
+        />
       ) : (
         <DashboardUI
           search={search}
