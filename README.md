@@ -290,7 +290,14 @@ View insurance claims.
 ### Provider Dashboard
 
 View providers.
-![Providers](screenshots/Profile1.png)
+![Providers](screenshots/Provider1.png)
+
+---
+
+### Profile Dashboard
+
+View providers.
+![Profile](screenshots/Profile1.png)
 
 ---
 
