@@ -64,11 +64,11 @@ Implemented using **Firebase Authentication**
 
 Features:
 
-* Secure user signup
-* Login authentication
-* Protected routes
-* Error handling for invalid credentials
-* Form validation
+- Secure user signup
+- Login authentication
+- Protected routes
+- Error handling for invalid credentials
+- Form validation
 
 ---
 
@@ -76,14 +76,14 @@ Features:
 
 Users can:
 
-* View claims dashboard
-* Filter claims via AI search
-* See claim status
+- View claims dashboard
+- Filter claims via AI search
+- See claim status
+  - Approved
+  - Pending
+  - Denied
 
-  * Approved
-  * Pending
-  * Denied
-* View claim details
+- View claim details
 
 Example AI query:
 
@@ -109,10 +109,10 @@ In network doctors near Hyderabad
 
 Provider data includes:
 
-* Doctor name
-* Specialty
-* Location
-* Network status
+- Doctor name
+- Specialty
+- Location
+- Network status
 
 ---
 
@@ -120,11 +120,11 @@ Provider data includes:
 
 The application handles multiple UI states to ensure smooth UX:
 
-* Loading Shimmers
-* No Data Found
-* AI Unknown Intent
-* API Failure
-* Empty Results
+- Loading Shimmers
+- No Data Found
+- AI Unknown Intent
+- API Failure
+- Empty Results
 
 This prevents blank screens and improves user experience.
 
@@ -200,26 +200,26 @@ src
 
 ### Frontend
 
-* React
-* Vite
-* TailwindCSS
-* React Router
+- React
+- Vite
+- TailwindCSS
+- React Router
 
 ### AI
 
-* Google Gemini API
+- Google Gemini API
 
 ### Authentication
 
-* Firebase Authentication
+- Firebase Authentication
 
 ### Data
 
-* MockAPI.io (REST endpoints)
+- MockAPI.io (REST endpoints)
 
 ### Deployment
 
-* Netlify
+- Netlify
 
 ---
 
@@ -267,29 +267,38 @@ VITE_FIREBASE_API_KEY=your_firebase_api_key
 ### Authentication
 
 Secure login and signup with Firebase.
+![Login](/ai-ins-app/screenshots/Auth%201.png)
+![Login with credtianls](/ai-ins-app/screenshots/Auth%202.png)
+![Signup](/ai-ins-app/screenshots/Auth%203.png)
 
 ---
 
 ### AI Smart Search
 
 Search providers and claims using natural language.
+![Dashboard](/ai-ins-app//screenshots/DashboardP1.png)
 
 ---
 
 ### Claims Dashboard
 
 View insurance claims.
+![Claims](/ai-ins-app/screenshots/Claims1.png)
 
 ---
+
 ### Provider Dashboard
 
 View providers.
+![Providers](/ai-ins-app/screenshots/Profile1.png)
 
 ---
 
 ### Provider/ Claims AI Search
 
 Find doctors by location, speciality, and network status or show my denied claims, my last 3 approved claims
+![Dashboard-Claim-AI-Search](/ai-ins-app//screenshots/DashbordC1.png)
+![Dashboard-Provider-AI-Search](/ai-ins-app//screenshots/Dashboard%201.png)
 
 ---
 
@@ -297,13 +306,13 @@ Find doctors by location, speciality, and network status or show my denied claim
 
 This project showcases practical skills in:
 
-* AI Integration with Frontend
-* API Architecture
-* React State Management
-* Error Handling
-* UX Handling for Async Data
-* Authentication Systems
-* Deployment & Production Build
+- AI Integration with Frontend
+- API Architecture
+- React State Management
+- Error Handling
+- UX Handling for Async Data
+- Authentication Systems
+- Deployment & Production Build
 
 ---
 
@@ -330,7 +339,7 @@ This project currently represents the first version of the AI Insurance Portal.
 More AI capabilities and platform improvements are planned for future updates.
 
 Planned enhancements include:
+
 - Advanced filters for claims and provider pages
 - Improved AI query understanding
 - Connecting the Profile page (currently static) to Firestore for persistent user data
-
