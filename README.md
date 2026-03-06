@@ -268,37 +268,37 @@ VITE_FIREBASE_API_KEY=your_firebase_api_key
 
 Secure login and signup with Firebase.
 ![Login](/ai-ins-app/screenshots/Auth%201.png)
-![Login with credtianls](/ai-ins-app/screenshots/Auth%202.png)
-![Signup](/ai-ins-app/screenshots/Auth%203.png)
+![Login with credtianls](screenshots/Auth%202.png)
+![Signup](screenshots/Auth%203.png)
 
 ---
 
 ### AI Smart Search
 
 Search providers and claims using natural language.
-![Dashboard](/ai-ins-app//screenshots/DashboardP1.png)
+![Dashboard](screenshots/DashboardP1.png)
 
 ---
 
 ### Claims Dashboard
 
 View insurance claims.
-![Claims](/ai-ins-app/screenshots/Claims1.png)
+![Claims](screenshots/Claims1.png)
 
 ---
 
 ### Provider Dashboard
 
 View providers.
-![Providers](/ai-ins-app/screenshots/Profile1.png)
+![Providers](screenshots/Profile1.png)
 
 ---
 
 ### Provider/ Claims AI Search
 
 Find doctors by location, speciality, and network status or show my denied claims, my last 3 approved claims
-![Dashboard-Claim-AI-Search](/ai-ins-app//screenshots/DashbordC1.png)
-![Dashboard-Provider-AI-Search](/ai-ins-app//screenshots/Dashboard%201.png)
+![Dashboard-Claim-AI-Search](screenshots/DashbordC1.png)
+![Dashboard-Provider-AI-Search](screenshots/Dashboard%201.png)
 
 ---
 
