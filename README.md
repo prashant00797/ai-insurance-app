@@ -1,16 +1,336 @@
-# React + Vite
+# 🛡️ InsureAI – AI Powered Insurance Portal
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+> An intelligent insurance dashboard that uses **AI-powered natural language search** to help users find providers and claims instantly.
 
-Currently, two official plugins are available:
+🌐 **Live Demo**
+[https://insureai-portal.netlify.app](https://insureai-portal.netlify.app)
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) (or [oxc](https://oxc.rs) when used in [rolldown-vite](https://vite.dev/guide/rolldown)) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+---
 
-## React Compiler
+# 🚀 Overview
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+**InsureAI** is a modern frontend application that allows users to interact with their insurance data using **natural language queries**.
 
-## Expanding the ESLint configuration
+Instead of navigating through complex filters, users can simply ask:
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+```
+Show cardiologists in Delhi
+Show approved claims
+Doctors in Pune
+Find in-network providers
+```
+
+The system uses **AI (Google Gemini)** to convert user queries into structured intent data, which is then used to fetch relevant claims or providers.
+
+This project demonstrates **AI integration with frontend architecture**, clean state management, and robust error handling.
+
+---
+
+# ✨ Key Features
+
+### 🤖 AI Smart Search
+
+Natural language queries are processed using **Gemini AI** to extract structured intent.
+
+Example:
+
+User Query
+
+```
+Show in-network cardiologists in Delhi
+```
+
+AI Response
+
+```json
+{
+  "intent": "get_providers",
+  "filters": {
+    "speciality": "cardiologist",
+    "location": "Delhi",
+    "providerStatus": "in-network"
+  },
+  "limit": null
+}
+```
+
+The app then fetches the filtered results automatically.
+
+---
+
+### 🔐 Authentication System
+
+Implemented using **Firebase Authentication**
+
+Features:
+
+* Secure user signup
+* Login authentication
+* Protected routes
+* Error handling for invalid credentials
+* Form validation
+
+---
+
+### 🧾 Claims Management
+
+Users can:
+
+* View claims dashboard
+* Filter claims via AI search
+* See claim status
+
+  * Approved
+  * Pending
+  * Denied
+* View claim details
+
+Example AI query:
+
+```
+Show my denied claims
+Show recent approved claims
+```
+
+---
+
+### 🏥 Provider Search
+
+Users can search for healthcare providers using AI.
+
+Example queries:
+
+```
+Cardiologists in Delhi
+Dermatologists in Mumbai
+Doctors in Pune
+In network doctors near Hyderabad
+```
+
+Provider data includes:
+
+* Doctor name
+* Specialty
+* Location
+* Network status
+
+---
+
+### ⚡ Smart UI States
+
+The application handles multiple UI states to ensure smooth UX:
+
+* Loading Shimmers
+* No Data Found
+* AI Unknown Intent
+* API Failure
+* Empty Results
+
+This prevents blank screens and improves user experience.
+
+---
+
+# 🧠 AI Query Processing Flow
+
+```
+User Query
+   ↓
+Gemini AI API
+   ↓
+Intent + Filters JSON
+   ↓
+Service Layer
+   ↓
+Mock API Filtering
+   ↓
+UI Rendering
+```
+
+This architecture allows natural language queries to be translated into structured API requests.
+
+---
+
+# 🏗️ Project Architecture
+
+The project follows a **clean separation of concerns** between UI, business logic, and API services.
+
+```
+src
+│
+├── assets
+├── constants
+├── module
+│   └── ...see repo
+│
+├── page
+│   ├── DashboardPage.jsx
+│   ├── ClaimsPage.jsx
+│   ├── ProviderPage.jsx
+│   └── AuthPage.jsx
+│   └── ...see repo
+│
+├── ui
+│   ├── DashboardUI.jsx
+│   ├── ClaimsUI.jsx
+│   ├── ProviderUI.jsx
+│   └── AuthUI.jsx
+│   └── ...see repo
+│
+│
+├── service
+│   ├── aiService.js
+│   ├── claimsService.js
+│   ├── providerService.js
+│   └── firebaseApi.js
+│   └── ...see repo
+├── router
+├   └── ...see repo
+├── store
+│
+└── utility
+│    └── validate.js
+└── root.jsx
+└── bootstrap.jsx
+└── index.css
+```
+
+---
+
+# 🛠 Tech Stack
+
+### Frontend
+
+* React
+* Vite
+* TailwindCSS
+* React Router
+
+### AI
+
+* Google Gemini API
+
+### Authentication
+
+* Firebase Authentication
+
+### Data
+
+* MockAPI.io (REST endpoints)
+
+### Deployment
+
+* Netlify
+
+---
+
+# ⚙️ Installation
+
+Clone the repository
+
+```
+git clone https://github.com/your-username/insureai-portal.git
+```
+
+Navigate to the project
+
+```
+cd insureai-portal
+```
+
+Install dependencies
+
+```
+npm install
+```
+
+Run the development server
+
+```
+npm run dev
+```
+
+---
+
+# 🔑 Environment Variables
+
+Create a `.env` file:
+
+```
+VITE_GEMINI_API_KEY=your_gemini_api_key
+VITE_FIREBASE_API_KEY=your_firebase_api_key
+```
+
+---
+
+# 📸 Screenshots
+
+### Authentication
+
+Secure login and signup with Firebase.
+
+---
+
+### AI Smart Search
+
+Search providers and claims using natural language.
+
+---
+
+### Claims Dashboard
+
+View insurance claims.
+
+---
+### Provider Dashboard
+
+View providers.
+
+---
+
+### Provider/ Claims AI Search
+
+Find doctors by location, speciality, and network status or show my denied claims, my last 3 approved claims
+
+---
+
+# 📈 What This Project Demonstrates
+
+This project showcases practical skills in:
+
+* AI Integration with Frontend
+* API Architecture
+* React State Management
+* Error Handling
+* UX Handling for Async Data
+* Authentication Systems
+* Deployment & Production Build
+
+---
+
+# 👨‍💻 Author
+
+**Prashant Nath**
+
+Frontend Developer
+React | JavaScript | UI Engineering
+
+---
+
+# ⭐ If you like this project
+
+Give the repository a ⭐ on GitHub!
+
+---
+
+⚡ Version 1 – AI Insurance Portal (MVP)
+
+🚧 **Project Status: Version 1 (MVP)**
+
+This project currently represents the first version of the AI Insurance Portal.  
+More AI capabilities and platform improvements are planned for future updates.
+
+Planned enhancements include:
+- Advanced filters for claims and provider pages
+- Improved AI query understanding
+- Connecting the Profile page (currently static) to Firestore for persistent user data
+
