@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://insureai-portal.netlify.app/sitemap.xml
