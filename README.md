@@ -1,5 +1,11 @@
 # 🛡️ InsureAI – AI Powered Insurance Portal
 
+![React](https://img.shields.io/badge/React-18-blue)
+![Vite](https://img.shields.io/badge/Vite-Frontend-purple)
+![TailwindCSS](https://img.shields.io/badge/TailwindCSS-UI-38BDF8)
+![Gemini](https://img.shields.io/badge/AI-Google%20Gemini-orange)
+![Status](https://img.shields.io/badge/Status-Completed-success)
+
 > An intelligent insurance dashboard that uses **AI-powered natural language search** to help users find providers and claims instantly.
 
 🌐 **Live Demo**
@@ -323,6 +329,12 @@ This project showcases practical skills in:
 
 ---
 
+# 📄 License
+
+This project is built for **learning and portfolio purposes**.
+
+![Portfolio Project](https://img.shields.io/badge/Portfolio-Project-blue)
+
 # 👨‍💻 Author
 
 **Prashant Nath**
@@ -350,3 +362,5 @@ Planned enhancements include:
 - Advanced filters for claims and provider pages
 - Improved AI query understanding
 - Connecting the Profile page (currently static) to Firestore for persistent user data
+
+💡 Built to demonstrate **AI integration in modern frontend applications using React**.

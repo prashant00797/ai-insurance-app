@@ -49,8 +49,11 @@
 
     <!-- Favicons -->
     <link rel="icon" href="/favicon.ico" />
+
+    <!-- Load the image immediately not after css parsing -->
+    <link rel="preload" as="image" href="/bg.webp" />
   </head>
-  <body>
+  <body style="background-color: dbeafe">
     <div id="root"></div>
     <script type="module" src="/src/bootstrap.jsx"></script>
   </body>

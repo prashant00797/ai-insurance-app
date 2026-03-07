@@ -38,7 +38,9 @@ const ProfileUI = ({ user }) => {
             <div className="flex flex-col lg:flex-row items-center gap-2">
               <div className="rounded-full bg-primary-600 w-10 h-10"></div>
               <div className="flex flex-row items-center gap-2.5 lg:flex-col lg:items-start lg:gap-0 ">
-                <h3 className="text-card-title text-gray-900">Ruby </h3>
+                <h3 className="text-card-title text-gray-900">
+                  Asmita Adhikari
+                </h3>
                 <p className="text-p text-gray-500 whitespace-nowrap ">
                   Mother, Jan 11 1973
                 </p>

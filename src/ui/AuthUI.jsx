@@ -1,4 +1,4 @@
-import bgImage from "../assets/bgImage.webp";
+import bgImage from "../../public/bgImage.webp";
 import logo from "../assets/logo.svg";
 import { AuthErrorMessage } from "../module/ErrorBoundary";
 const AuthUI = ({
