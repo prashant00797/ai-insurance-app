@@ -267,7 +267,7 @@ VITE_FIREBASE_API_KEY=your_firebase_api_key
 ### Authentication
 
 Secure login and signup with Firebase.
-![Login](/ai-ins-app/screenshots/Auth%201.png)
+![Login](/ai-ins-app/screenshots/A1.png)
 ![Login with credtianls](screenshots/Auth%202.png)
 ![Signup](screenshots/Auth%203.png)
 
