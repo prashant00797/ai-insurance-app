@@ -1,12 +1,8 @@
 import logo from "../assets/logo.svg";
 import { NavLink } from "react-router-dom";
-import {
-  ClaimsIcon,
-  ProviderIcon,
-  ProfileIcon,
-  DashboardIcon,
-  LogoutIcon,
-} from "../utility/Icons.jsx";
+import { LogoutIcon, IconConfig } from "../utility/Icons.jsx";
+import { MobileNavConfig, SidebarConfig } from "../constant/config.js";
+import { Logout } from "../constant/label.js";
 
 const Sidebar = ({ handleSignOut }) => {
   const desktopBaseStyles =
@@ -29,104 +25,54 @@ const Sidebar = ({ handleSignOut }) => {
 
           <div className="p-4">
             <ul className="text-section-title space-y-2">
-              <NavLink to="/claims">
-                {({ isActive }) => (
-                  <li
-                    className={`${desktopBaseStyles} ${isActive ? desktopActiveStyles : ""}`}
-                  >
-                    Claims
-                  </li>
-                )}
-              </NavLink>
-
-              <NavLink to="/provider">
-                {({ isActive }) => (
-                  <li
-                    className={`${desktopBaseStyles} ${isActive ? desktopActiveStyles : ""}`}
-                  >
-                    Provider
-                  </li>
-                )}
-              </NavLink>
-
-              <NavLink to="/profile">
-                {({ isActive }) => (
-                  <li
-                    className={`${desktopBaseStyles} ${isActive ? desktopActiveStyles : ""}`}
-                  >
-                    Profile
-                  </li>
-                )}
-              </NavLink>
+              {SidebarConfig.map((nav) => {
+                return (
+                  <NavLink key={nav.link} to={nav.link}>
+                    {({ isActive }) => (
+                      <li
+                        className={`${desktopBaseStyles} ${isActive ? desktopActiveStyles : ""}`}
+                      >
+                        {nav.name}
+                      </li>
+                    )}
+                  </NavLink>
+                );
+              })}
             </ul>
           </div>
         </div>
-        <div id="">
+        <div>
           <button
             className={` p-2 rounded-default text-danger w-full hover:brightness-110 text-left text-section-title cursor-pointer`}
             onClick={handleSignOut}
           >
-            📴Logout
+            {`📴${Logout}`}
           </button>
         </div>
       </nav>
 
       {/* Mobile Bottom Nav */}
       <nav className="fixed bottom-0 left-0 w-full bg-primary-100 shadow-level-1 flex justify-around py-3 z-1 lg:hidden">
-        <NavLink to="/">
-          {({ isActive }) => (
-            <div
-              className={`${mobileBaseStyles} ${
-                isActive ? "text-primary-500" : "text-gray-900"
-              }`}
-            >
-              <DashboardIcon className="w-6 h-6" />
-              <span className="text-caption">Dashboard</span>
-            </div>
-          )}
-        </NavLink>
-        <NavLink to="/claims">
-          {({ isActive }) => (
-            <div
-              className={`${mobileBaseStyles} ${
-                isActive ? "text-primary-500" : "text-gray-900"
-              }`}
-            >
-              <ClaimsIcon className="w-6 h-6" />
-              <span className="text-caption">Claims</span>
-            </div>
-          )}
-        </NavLink>
-
-        <NavLink to="/provider">
-          {({ isActive }) => (
-            <div
-              className={`${mobileBaseStyles} ${
-                isActive ? "text-primary-500" : "text-gray-900"
-              }`}
-            >
-              <ProviderIcon className="w-6 h-6" />
-              <span className="text-caption">Provider</span>
-            </div>
-          )}
-        </NavLink>
-
-        <NavLink to="/profile">
-          {({ isActive }) => (
-            <div
-              className={`${mobileBaseStyles} ${
-                isActive ? "text-primary-500" : "text-gray-900"
-              }`}
-            >
-              <ProfileIcon className="w-6 h-6" />
-              <span className="text-caption">Profile</span>
-            </div>
-          )}
-        </NavLink>
+        {MobileNavConfig.map((nav) => {
+          return (
+            <NavLink key={nav.link} to={nav.link}>
+              {({ isActive }) => (
+                <div
+                  className={`${mobileBaseStyles} ${
+                    isActive ? "text-primary-500" : "text-gray-900"
+                  }`}
+                >
+                  <IconConfig name={nav.iconName} className="w-6 h-6" />
+                  <span className="text-caption">{nav.label}</span>
+                </div>
+              )}
+            </NavLink>
+          );
+        })}
         <div id="logout">
           <button onClick={handleSignOut} className={`${mobileBaseStyles}`}>
             <LogoutIcon className="w-6 h-6 fill-danger" />
-            <span className="text-caption">Logout</span>
+            <span className="text-caption">{Logout}</span>
           </button>
         </div>
       </nav>

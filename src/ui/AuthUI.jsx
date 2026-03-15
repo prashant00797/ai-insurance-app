@@ -1,14 +1,16 @@
 import logo from "../assets/logo.svg";
 import { AuthErrorMessage } from "../module/ErrorBoundary";
 import {
-  AuthTagLines,
+  AuthTagLinesConfig,
   FormConfig,
+  ToggleLoginSignUpConfig,
+} from "../constant/config";
+import {
   Login,
   LoginShimmerText,
   Signup,
   SignupShimmerText,
-  ToggleLoginSignUpConfig,
-} from "../constant/common";
+} from "../constant/label";
 const AuthUI = ({
   mode,
   handleMode,
@@ -29,10 +31,10 @@ const AuthUI = ({
       <div className="flex flex-col justify-center items-center  lg:flex-row lg:justify-center gap-10 min-h-[90vh]">
         <div id="intro" className="flex flex-col gap-3 px-10">
           <h1 className="text-primary-600 text-page-title text-center break-after-all">
-            {AuthTagLines.title}
+            {AuthTagLinesConfig.title}
           </h1>
           <ul>
-            {AuthTagLines.taglines.map((li, idx) => {
+            {AuthTagLinesConfig.taglines.map((li, idx) => {
               return (
                 <li key={idx} className="text-gray-700 text-body">
                   {li}
