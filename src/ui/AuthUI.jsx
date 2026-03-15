@@ -1,6 +1,14 @@
 import logo from "../assets/logo.svg";
 import { AuthErrorMessage } from "../module/ErrorBoundary";
-import { AuthTagLines } from "../constant/common";
+import {
+  AuthTagLines,
+  FormConfig,
+  Login,
+  LoginShimmerText,
+  Signup,
+  SignupShimmerText,
+  ToggleLoginSignUpConfig,
+} from "../constant/common";
 const AuthUI = ({
   mode,
   handleMode,
@@ -33,130 +41,61 @@ const AuthUI = ({
             })}
           </ul>
         </div>
-        <div
-          id="auth-form"
-          className=" w-90 lg:w-[30vmax] h-full bg-white rounded-default shadow-level-2 p-7"
-        >
-          <div
-            id="login-signup"
-            className=" flex items-center justify-around mb-4"
-          >
-            <button
-              onClick={() => handleMode("Login")}
-              className={
-                mode === "Login"
-                  ? "text-primary-500 border-b-2 border-primary-100 cursor-pointer"
-                  : "text-gray-900 cursor-pointer hover:brightness-105"
-              }
-            >
-              Login
-            </button>
-            <button
-              className={
-                mode === "SignUp"
-                  ? "text-primary-500 border-b-2 border-primary-100 cursor-pointer"
-                  : "text-gray-900 cursor-pointer hover:brightness-105"
-              }
-              onClick={() => handleMode("SignUp")}
-            >
-              SignUp
-            </button>
+        <div className=" w-90 lg:w-[30vmax] h-full bg-white rounded-default shadow-level-2 p-7">
+          <div className=" flex items-center justify-around mb-4">
+            {ToggleLoginSignUpConfig.map((item) => {
+              return (
+                <button
+                  key={item.mode}
+                  onClick={() => handleMode(item.mode)}
+                  className={
+                    mode === item.mode
+                      ? "text-primary-500 border-b-2 border-primary-100 cursor-pointer"
+                      : "text-gray-900 cursor-pointer hover:brightness-105"
+                  }
+                >
+                  {item.label}
+                </button>
+              );
+            })}
           </div>
-          <form className="transition-all duration-300" onSubmit={handleSumbit}>
+          <form onSubmit={handleSumbit}>
             <div id="input-field">
-              {mode === "SignUp" && (
-                <>
-                  <div id="fname" className="flex flex-col mb-3">
+              {FormConfig.map((field) => {
+                if (mode === Login && field.flag === Signup) return null;
+                return (
+                  <div key={field.id} className="flex flex-col mb-3">
                     <label
-                      htmlFor="fname"
+                      htmlFor={field.id}
                       className="text-gray-900 text-caption mb-0.5 font-semibold"
                     >
-                      Full Name
+                      {field.label}
                     </label>
                     <input
                       required
                       autoComplete="off"
-                      type="text"
-                      id="fname"
-                      name="fname"
-                      placeholder="🔤Enter Your Full Name"
-                      className="border border-gray-200 rounded-default h-[7vmin] p-2 focus:placeholder-transparent transition"
+                      type={field.type}
+                      id={field.id}
+                      name={field.name}
+                      placeholder={field.placeholder}
+                      className={`border border-gray-200 rounded-default h-[7vmin] p-2 focus:placeholder-transparent ${field.type === "number" && "[appearance:textfield] [&::-webkit-outer-spin-button]:appearance-none [&::-webkit-inner-spin-button]:appearance-none"} `}
                       onChange={(e) => handleOnChange(e)}
-                      value={formData.fname}
+                      value={formData[field.name]}
                     />
                   </div>
-                  <div id="crn" className="flex flex-col mb-3">
-                    <label
-                      htmlFor="crn"
-                      className="text-gray-900 text-caption mb-0.5 font-semibold"
-                    >
-                      CRN
-                    </label>
-                    <input
-                      required
-                      autoComplete="off"
-                      type="number"
-                      id="crn"
-                      name="crn"
-                      placeholder="🔢Enter Your CRN"
-                      className="border border-gray-200 rounded-default h-[7vmin] p-2 [appearance:textfield] [&::-webkit-outer-spin-button]:appearance-none [&::-webkit-inner-spin-button]:appearance-none focus:placeholder-transparent transition"
-                      onChange={(e) => handleOnChange(e)}
-                      value={formData.crn}
-                    />
-                  </div>
-                </>
-              )}
-              <div id="email" className="flex flex-col mb-3">
-                <label
-                  htmlFor="email"
-                  className="text-gray-900 text-caption mb-0.5 font-semibold"
-                >
-                  Email
-                </label>
-                <input
-                  required
-                  autoComplete="off"
-                  type="text"
-                  id="email"
-                  name="email"
-                  placeholder="✉️Enter Your email"
-                  className="border border-gray-200 rounded-default h-[7vmin] p-2 focus:placeholder-transparent transition"
-                  onChange={(e) => handleOnChange(e)}
-                  value={formData.email}
-                />
-              </div>
-              <div id="password" className="flex flex-col mb-3">
-                <label
-                  htmlFor="password"
-                  className="text-gray-900 text-caption mb-0.5 font-semibold focus:placeholder-transparent transition"
-                >
-                  Password
-                </label>
-                <input
-                  required
-                  autoComplete="off"
-                  type="password"
-                  id="pwd"
-                  name="pwd"
-                  placeholder="🔒********"
-                  className="border border-gray-200 rounded-default h-[7vmin] p-2"
-                  onChange={(e) => handleOnChange(e)}
-                  value={formData.pwd}
-                />
-              </div>
+                );
+              })}
               {errorMessage && <AuthErrorMessage errorMessage={errorMessage} />}
               {isLoading && (
                 <div className=" mb-7">
                   <p className="text-primary-600 animate-pulse">
-                    {mode === "Login"
-                      ? "Signing you in..."
-                      : "Creating your account..."}
+                    {mode === Login ? LoginShimmerText : SignupShimmerText}
                   </p>
                 </div>
               )}
             </div>
             <button className="w-full bg-primary-500 rounded-default h-[8vmin] cursor-pointer hover:brightness-110 text-primary-100">
-              {mode === "Login" ? "Login" : "SignUp"}
+              {mode === Login ? Login : Signup}
             </button>
           </form>
         </div>
