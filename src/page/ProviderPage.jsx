@@ -14,10 +14,9 @@ const ProviderPage = () => {
   const PAGE_SIZE = 5;
 
   const fetchComponentData = async () => {
+    setIsLoading(true);
     try {
-      setIsLoading(true);
       const response = await getProviders();
-
       setComponenetData(response);
     } catch {
       setError(true);

@@ -4,3 +4,4 @@ export const SignupShimmerText = "Creating your account...";
 export const Login = "Login";
 export const Signup = "SignUp";
 export const Logout = "Logout";
+export const CoverageActive = "🟢Coverage Active";

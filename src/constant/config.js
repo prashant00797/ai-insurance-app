@@ -94,3 +94,42 @@ export const MobileNavConfig = [
     link: "/profile",
   },
 ];
+
+export const ProfileConfig = {
+  headerLabel: "Profile",
+  userInfo: [
+    {
+      name: "prashant",
+      memberID: "51232",
+      dob: "Jan 12 1997",
+      coverageActive: true,
+    },
+  ],
+};
+
+export const CovergaePlanConfig = {
+  headerLabel: "Plan Info",
+  plan_Info: [
+    {
+      id: "121",
+      planName: "Vivanta Medicare",
+      description: [
+        {
+          planCategory: "Premium Plus",
+          planNumber: "POL12312313",
+          planMailId: "PPO@XYZ.COM",
+        },
+      ],
+    },
+  ],
+};
+export const DependentConfig = {
+  headerLabel: "Dependents",
+  dependents: [
+    {
+      dependentName: "Arjun Roy",
+      dependentRelation: "Father",
+      dependentDOB: "Jan 11 1963",
+    },
+  ],
+};
