@@ -26,6 +26,7 @@ export const FormConfig = [
     placeholder: "🔤Enter Your Full Name",
     label: "Full Name",
     type: "text",
+    required: true,
   },
   {
     flag: "SignUp",
@@ -34,6 +35,7 @@ export const FormConfig = [
     placeholder: "🔢Enter Your CRN",
     label: "CRN",
     type: "number",
+    required: true,
   },
   {
     flag: "Login-SignUp",
@@ -42,6 +44,7 @@ export const FormConfig = [
     placeholder: "✉️Enter Your email",
     label: "Email",
     type: "text",
+    required: true,
   },
   {
     flag: "Login-SignUp",
@@ -50,6 +53,7 @@ export const FormConfig = [
     placeholder: "🔒********",
     label: "Password",
     type: "password",
+    required: true,
   },
 ];
 

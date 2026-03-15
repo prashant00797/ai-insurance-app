@@ -11,6 +11,7 @@ import {
   Signup,
   SignupShimmerText,
 } from "../constant/label";
+
 const AuthUI = ({
   mode,
   handleMode,
@@ -22,17 +23,21 @@ const AuthUI = ({
 }) => {
   return (
     <div
-      className=" min-h-screen bg-cover bg-center pb-2"
+      className="min-h-screen flex flex-col bg-cover bg-center"
       style={{ backgroundImage: `url(${"/bgImage.webp"})` }}
     >
-      <div className="pl-4 mb-6">
+      <div className="pl-4 pt-4">
         <img src={logo} alt="insureAI" />
       </div>
-      <div className="flex flex-col justify-center items-center  lg:flex-row lg:justify-center gap-10 min-h-[90vh]">
-        <div id="intro" className="flex flex-col gap-3 px-10">
-          <h1 className="text-primary-600 text-page-title text-center break-after-all">
+
+      {/* Center Section */}
+      <div className="flex flex-1 flex-col justify-center items-center lg:flex-row gap-10 px-6">
+        {/* Intro */}
+        <div id="intro" className="flex flex-col gap-3 max-w-lg">
+          <h1 className="text-primary-600 text-page-title text-center lg:text-left">
             {AuthTagLinesConfig.title}
           </h1>
+
           <ul>
             {AuthTagLinesConfig.taglines.map((li, idx) => {
               return (
@@ -43,8 +48,11 @@ const AuthUI = ({
             })}
           </ul>
         </div>
-        <div className=" w-90 lg:w-[30vmax] h-full bg-white rounded-default shadow-level-2 p-7">
-          <div className=" flex items-center justify-around mb-4">
+
+        {/* Auth Card */}
+        <div className="w-full max-w-md bg-white rounded-default shadow-level-2 p-7">
+          {/* Toggle */}
+          <div className="flex items-center justify-around mb-4">
             {ToggleLoginSignUpConfig.map((item) => {
               return (
                 <button
@@ -61,10 +69,13 @@ const AuthUI = ({
               );
             })}
           </div>
+
+          {/* Form */}
           <form onSubmit={handleSumbit}>
             <div id="input-field">
               {FormConfig.map((field) => {
                 if (mode === Login && field.flag === Signup) return null;
+
                 return (
                   <div key={field.id} className="flex flex-col mb-3">
                     <label
@@ -73,30 +84,36 @@ const AuthUI = ({
                     >
                       {field.label}
                     </label>
+
                     <input
-                      required
+                      required={field.required}
                       autoComplete="off"
                       type={field.type}
                       id={field.id}
                       name={field.name}
                       placeholder={field.placeholder}
-                      className={`border border-gray-200 rounded-default h-[7vmin] p-2 focus:placeholder-transparent ${field.type === "number" && "[appearance:textfield] [&::-webkit-outer-spin-button]:appearance-none [&::-webkit-inner-spin-button]:appearance-none"} `}
-                      onChange={(e) => handleOnChange(e)}
+                      className={`border border-gray-200 rounded-default h-11 p-2 focus:placeholder-transparent ${
+                        field.type === "number" &&
+                        "[appearance:textfield] [&::-webkit-outer-spin-button]:appearance-none [&::-webkit-inner-spin-button]:appearance-none"
+                      }`}
+                      onChange={handleOnChange}
                       value={formData[field.name]}
                     />
                   </div>
                 );
               })}
               {errorMessage && <AuthErrorMessage errorMessage={errorMessage} />}
+
               {isLoading && (
-                <div className=" mb-7">
+                <div className="mb-7">
                   <p className="text-primary-600 animate-pulse">
                     {mode === Login ? LoginShimmerText : SignupShimmerText}
                   </p>
                 </div>
               )}
             </div>
-            <button className="w-full bg-primary-500 rounded-default h-[8vmin] cursor-pointer hover:brightness-110 text-primary-100">
+
+            <button className="w-full bg-primary-500 rounded-default h-11 cursor-pointer hover:brightness-110 text-primary-100">
               {mode === Login ? Login : Signup}
             </button>
           </form>
