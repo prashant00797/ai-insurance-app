@@ -6,3 +6,12 @@ export const BASE_URL_PROVIDERS =
 
 export const GEMINI_KEY = import.meta.env.VITE_GEMINI_API_KEY;
 export const FIREBASE_KEY = import.meta.env.VITE_FIREBASE_API_KEY;
+
+export const AuthTagLines = {
+  title: "Streamline Your Health Insurance with AI",
+  taglines: [
+    "✔️Get Instant answers about your health plan",
+    "✔️Easily manage your claims",
+    "✔️Find in-network or out-network doctors quickly",
+  ],
+};

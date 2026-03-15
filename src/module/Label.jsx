@@ -14,9 +14,10 @@ const Label = ({ componentData, status, title }) => {
       <div className="bg-primary-600 text-white rounded-default w-full h-10 text-center p-2 whitespace-nowrap">
         {`${componentData.length} Total ${title}`}
       </div>
-      {__status.map((s) => {
+      {__status.map((s, idx) => {
         return (
           <div
+            key={idx}
             className={`${statusStyles[s]} text-white rounded-default w-full h-10 text-center p-2`}
           >
             {`${status.reduce((acc, curr) => (curr === s ? acc + 1 : acc), 0)} ${s}`}

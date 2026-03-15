@@ -10,16 +10,16 @@ import { FIREBASE_KEY } from "../constant/common";
 // For Firebase JS SDK v7.20.0 and later, measurementId is optional
 const firebaseConfig = {
   apiKey: FIREBASE_KEY,
-  authDomain: "insure-ai-75bff.firebaseapp.com",
-  projectId: "insure-ai-75bff",
-  storageBucket: "insure-ai-75bff.firebasestorage.app",
-  messagingSenderId: "768514357626",
-  appId: "1:768514357626:web:2d9a1070974a420468bec3",
-  measurementId: "G-7VFNTVQJDJ",
+  authDomain: "portfolio-projects-df181.firebaseapp.com",
+  projectId: "portfolio-projects-df181",
+  storageBucket: "portfolio-projects-df181.firebasestorage.app",
+  messagingSenderId: "192154498151",
+  appId: "1:192154498151:web:9daaff851044d5e63450c2",
+  measurementId: "G-SX1MGTGV9B",
 };
 
 // Initialize Firebase
 const app = initializeApp(firebaseConfig);
 // eslint-disable-next-line no-unused-vars
 const analytics = getAnalytics(app);
-export const auth = getAuth();
+export const auth = getAuth(app);

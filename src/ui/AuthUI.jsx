@@ -1,6 +1,6 @@
-import bgImage from "../../public/bgImage.webp";
 import logo from "../assets/logo.svg";
 import { AuthErrorMessage } from "../module/ErrorBoundary";
+import { AuthTagLines } from "../constant/common";
 const AuthUI = ({
   mode,
   handleMode,
@@ -13,7 +13,7 @@ const AuthUI = ({
   return (
     <div
       className=" min-h-screen bg-cover bg-center pb-2"
-      style={{ backgroundImage: `url(${bgImage})` }}
+      style={{ backgroundImage: `url(${"/bgImage.webp"})` }}
     >
       <div className="pl-4 mb-6">
         <img src={logo} alt="insureAI" />
@@ -21,18 +21,16 @@ const AuthUI = ({
       <div className="flex flex-col justify-center items-center  lg:flex-row lg:justify-center gap-10 min-h-[90vh]">
         <div id="intro" className="flex flex-col gap-3 px-10">
           <h1 className="text-primary-600 text-page-title text-center break-after-all">
-            Streamline Your Health Insurance with AI
+            {AuthTagLines.title}
           </h1>
           <ul>
-            <li className="text-gray-700 text-body">
-              ✔️Get Instant answers about your health plan
-            </li>
-            <li className="text-gray-700 text-body">
-              ✔️Easily manage your claims
-            </li>
-            <li className="text-gray-700 text-body">
-              ✔️Find in-network or out-network doctors quickly
-            </li>
+            {AuthTagLines.taglines.map((li, idx) => {
+              return (
+                <li key={idx} className="text-gray-700 text-body">
+                  {li}
+                </li>
+              );
+            })}
           </ul>
         </div>
         <div

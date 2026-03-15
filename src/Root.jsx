@@ -9,7 +9,7 @@ import { GlobalLoader } from "./module/ErrorBoundary";
 
 //Global listener component
 const Root = () => {
-  //state to control the flickering when between the time frame between app loading --> user null TO on auth change fire
+  //state to control the flickering when between the time frame between app loading --> user null to on auth change fire
   const [authCheck, setAuthCheck] = useState(true);
 
   const dispatch = useDispatch();
@@ -32,7 +32,7 @@ const Root = () => {
       setAuthCheck(false);
     });
 
-    // Unsiubscribe when component unmounts
+    // Unsubscribe when component unmounts
     return () => unsubscribe();
   }, [dispatch]);
 
