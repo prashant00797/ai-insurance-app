@@ -5,3 +5,6 @@ export const Login = "Login";
 export const Signup = "SignUp";
 export const Logout = "Logout";
 export const CoverageActive = "🟢Coverage Active";
+export const DashboardTitle = "How can i help you today?";
+export const Search = "Search";
+export const CardViewDetails = "View Details";

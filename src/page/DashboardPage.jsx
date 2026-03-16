@@ -47,9 +47,9 @@ const DashboardPage = () => {
 
   //main check to gemini api and based on intent getting send result to mockapi.io
   const handleSearchFlow = async (query) => {
-    try {
-      setIsLoading(true);
+    setIsLoading(true);
 
+    try {
       //AI intent fetch
       const aiData = await getUserQuery(query);
       setIntentData(aiData);
@@ -86,6 +86,7 @@ const DashboardPage = () => {
       setComponentData(response);
     } catch {
       setError(true);
+      setHasSearched(true);
     } finally {
       setIsLoading(false);
     }

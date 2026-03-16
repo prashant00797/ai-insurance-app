@@ -1,4 +1,6 @@
 import botImage from "../assets/botImage.webp";
+import { DashboardDefaultMessageConfig } from "../constant/config";
+import { DashboardTitle, Search } from "../constant/label";
 import CardPage from "../page/CardPage";
 import BackUI from "./BackUI";
 
@@ -23,7 +25,7 @@ const DashboardUI = ({
             type="text"
             name="ai-search"
             id="ai-search"
-            placeholder="🔍Search Smart Searches"
+            placeholder="🔍 Smart Search"
             className="flex-1 h-10 shadow-level-2 p-2 border-default focus:outline-none"
             value={inputValue} //guard 3
             onChange={(e) => handleSearch(e.target.value)}
@@ -32,9 +34,10 @@ const DashboardUI = ({
           />
           <button
             onClick={() => handleClick()}
-            className="shrink-0 bg-primary-600 text-white p-2 rounded-default lg:hover:brightness-125 lg:hover:text-white cursor-pointer"
+            disabled={!inputValue.trim()}
+            className="shrink-0 bg-primary-600 text-white p-2 rounded-default lg:hover:brightness-125 lg:hover:text-white cursor-pointer disabled:bg-gray-400 disabled:cursor-default"
           >
-            Search
+            {Search}
           </button>
         </div>
 
@@ -46,23 +49,22 @@ const DashboardUI = ({
               </div>
               <div>
                 <h1 className="text-page-title font-semibold text-center text-gray-900 lg:whitespace-nowrap">
-                  How can i help you today?
+                  {DashboardTitle}
                 </h1>
               </div>
             </div>
             <div className="flex flex-col items-center mb-8">
-              <button
-                onClick={() => handleDefaultClick("Show my denied Claims")}
-                className="w-[90%] shadow-level-2 p-2 mb-2.5 rounded-default cursor-pointer hover:bg-primary-100 hover:text-primary-500"
-              >
-                🛄Show my denied Claims
-              </button>
-              <button
-                onClick={() => handleDefaultClick("Cardiologist in Delhi")}
-                className="w-[90%] shadow-level-2 p-2 rounded-default cursor-pointer hover:bg-primary-100 hover:text-primary-500"
-              >
-                🥼Cardiologist in Delhi
-              </button>
+              {DashboardDefaultMessageConfig.map((btn) => {
+                return (
+                  <button
+                    key={btn.label}
+                    onClick={() => handleDefaultClick(btn.defaultMessage)}
+                    className="w-[90%] shadow-level-2 p-2 mb-2.5 rounded-default cursor-pointer hover:bg-primary-100 hover:text-primary-500"
+                  >
+                    {btn.label}
+                  </button>
+                );
+              })}
             </div>
           </div>
         ) : (

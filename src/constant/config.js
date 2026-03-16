@@ -133,3 +133,14 @@ export const DependentConfig = {
     },
   ],
 };
+
+export const DashboardDefaultMessageConfig = [
+  {
+    label: "🛄Show my denied Claims",
+    defaultMessage: "Show my denied Claims",
+  },
+  {
+    label: "🥼Cardiologist in Delhi",
+    defaultMessage: "Cardiologist in Delhi",
+  },
+];

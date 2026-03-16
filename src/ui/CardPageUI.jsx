@@ -1,3 +1,4 @@
+import { CardViewDetails } from "../constant/label";
 import Banner from "../module/Banner";
 
 const CardPageUI = ({ componentData, intentData, handleViewDetails }) => {
@@ -51,7 +52,7 @@ const CardPageUI = ({ componentData, intentData, handleViewDetails }) => {
                     onClick={handleViewDetails}
                     className="bg-primary-500 text-white p-1 rounded-default hover:brightness-110 cursor-pointer"
                   >
-                    View Details
+                    {CardViewDetails}
                   </button>
                 </div>
               </div>

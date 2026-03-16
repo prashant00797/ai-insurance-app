@@ -88,9 +88,19 @@ User query:
     },
   );
 
+  if (!response.ok) {
+    throw new Error("Gemini Service Failed");
+  }
+
   const data = await response.json();
 
+  console.log(data);
+
   const originalText = data.candidates?.[0]?.content?.parts?.[0]?.text;
+
+  if (!originalText) {
+    throw new Error("Invalid Gemini Response Structure");
+  }
 
   const cleanedIntentObj = originalText
     .replace(/```json/g, "")
