@@ -23,6 +23,5 @@ export const logInUserService = async (email, pwd) => {
 };
 
 export const logOutUserService = async () => {
-  const loggedOutUser = await signOut(auth);
-  return loggedOutUser;
+  await signOut(auth);
 };
