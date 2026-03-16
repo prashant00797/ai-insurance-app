@@ -94,8 +94,6 @@ User query:
 
   const data = await response.json();
 
-  console.log(data);
-
   const originalText = data.candidates?.[0]?.content?.parts?.[0]?.text;
 
   if (!originalText) {
