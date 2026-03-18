@@ -11,6 +11,7 @@ import {
   Signup,
   SignupShimmerText,
 } from "../constant/label";
+import Footer from "./Footer";
 
 const AuthUI = ({
   mode,
@@ -119,6 +120,7 @@ const AuthUI = ({
           </form>
         </div>
       </div>
+      <Footer />
     </div>
   );
 };
