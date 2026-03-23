@@ -21,6 +21,7 @@ const Footer = () => {
             href={link.link}
             target="_blank"
             className="hover:text-primary-600"
+            key={link.name}
           >
             {link.name}
           </a>

@@ -22,6 +22,12 @@ const AuthUI = ({
   errorMessage,
   isLoading,
 }) => {
+  const FilterFormFields = FormConfig.filter((field) => {
+    if (field.flag === "Login-SignUp") return true;
+    if (field.flag === "SignUp" && mode === "SignUp") return true;
+    return false;
+  });
+
   return (
     <div
       className="min-h-screen flex flex-col bg-cover bg-center"
@@ -74,9 +80,7 @@ const AuthUI = ({
           {/* Form */}
           <form onSubmit={handleSumbit}>
             <div id="input-field">
-              {FormConfig.map((field) => {
-                if (mode === Login && field.flag === Signup) return null;
-
+              {FilterFormFields.map((field) => {
                 return (
                   <div key={field.id} className="flex flex-col mb-3">
                     <label

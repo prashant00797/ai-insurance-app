@@ -15,6 +15,7 @@ const AuthPage = () => {
 
   const handleMode = (newMode) => {
     setMode(newMode);
+    setErrorMessage("");
   };
 
   const handleOnChange = (e) => {
