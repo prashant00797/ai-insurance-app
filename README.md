@@ -377,6 +377,7 @@ Planned enhancements include:
 
 - Added essential meta tags for better search engine visibility
 - Improved page metadata structure for shareability and indexing
+  Note: Built with React CSR, so meta tags are static.
 
 ### Config-Driven UI
 
