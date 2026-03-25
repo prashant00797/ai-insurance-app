@@ -13,6 +13,12 @@
 
 ---
 
+## 📌 Quick Links
+
+- [Project Updates](#project-updates)
+
+---
+
 # 🚀 Overview
 
 **InsureAI** is a modern frontend application that allows users to interact with their insurance data using **natural language queries**.
@@ -363,4 +369,36 @@ Planned enhancements include:
 - Improved AI query understanding
 - Connecting the Profile page (currently static) to Firestore for persistent user data
 
+---
+
+## 🚧 Project Updates
+
+### SEO Enhancements
+
+- Added essential meta tags for better search engine visibility
+- Improved page metadata structure for shareability and indexing
+
+### Config-Driven UI
+
+- Converted UI behavior and labels into config-based JS objects
+- Enabled scalable and maintainable UI by reducing hardcoded logic
+- Improved flexibility for extending features without modifying core components
+
+### Custom Hooks
+
+- Introduced `usePagination` to handle pagination logic (total pages, slicing indices)
+- Created `useFilteredData` to manage status-based filtering
+- Improved separation of concerns by moving business logic out of UI components
+- Optimized computations using `useMemo`
+
+### Dynamic Filtering
+
+- Implemented status-based filtering (e.g., Total, Approved, Pending)
+- UI interactions update `activeStatus`, triggering real-time data filtering
+- Ensures state-driven rendering and cleaner component structure
+
+---
+
 💡 Built to demonstrate **AI integration in modern frontend applications using React**.
+
+---

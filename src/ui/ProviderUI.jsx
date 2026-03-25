@@ -8,6 +8,8 @@ const ProviderUI = ({
   handlePagination,
   currentPage,
   totalPages,
+  handleStatusActive,
+  filteredData,
 }) => {
   const providerStatus = componentData.map((s) => s.providerStatus);
   const tableHeads = [
@@ -28,9 +30,10 @@ const ProviderUI = ({
         componentData={componentData}
         status={providerStatus}
         title={"Provider"}
+        handleStatusActive={handleStatusActive}
       />
       <Table
-        componentData={componentData}
+        componentData={filteredData}
         tableHeads={tableHeads}
         start={start}
         end={end}

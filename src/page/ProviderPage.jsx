@@ -3,15 +3,24 @@ import ProviderUI from "../ui/ProviderUI";
 import { getProviders } from "../service/providerService";
 import { ClaimProviderPageShimmer } from "../module/Shimmer";
 import { NoData, ServiceFailure } from "../module/ErrorBoundary";
+import { useFilteredData } from "../hooks/useFilteredData";
+import { usePagination } from "../hooks/usePagination";
 
 const ProviderPage = () => {
+  const PAGE_SIZE = 5;
   const [componentData, setComponenetData] = useState([]);
   const [isLoading, setIsLoading] = useState(false);
   const [hasFetched, setHasFetched] = useState(false);
   const [error, setError] = useState(false);
   const [currentPage, setCurrentPage] = useState(0);
-
-  const PAGE_SIZE = 5;
+  const [activeStatus, setActiveStatus] = useState("all");
+  //custom hooks
+  const updatedComponentData = useFilteredData(activeStatus, componentData);
+  const { totalPages, start, end } = usePagination(
+    updatedComponentData,
+    currentPage,
+    PAGE_SIZE,
+  );
 
   const fetchComponentData = async () => {
     setIsLoading(true);
@@ -25,11 +34,10 @@ const ProviderPage = () => {
       setHasFetched(true);
     }
   };
-
-  const totalData = componentData.length;
-  const totalPages = Math.ceil(totalData / PAGE_SIZE);
-  const start = currentPage * PAGE_SIZE;
-  const end = start + PAGE_SIZE;
+  const handleStatusActive = (e, currentStatus) => {
+    e.preventDefault();
+    setActiveStatus(currentStatus);
+  };
 
   const handlePagination = (n) => {
     setCurrentPage(n);
@@ -54,6 +62,8 @@ const ProviderPage = () => {
         handlePagination={handlePagination}
         currentPage={currentPage}
         totalPages={totalPages}
+        handleStatusActive={handleStatusActive}
+        filteredData={updatedComponentData}
       />
     </main>
   );

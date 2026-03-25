@@ -8,6 +8,8 @@ const ClaimsUI = ({
   handlePagination,
   currentPage,
   totalPages,
+  handleStatusActive,
+  filteredData,
 }) => {
   const claimsStatus = componentData?.map((s) => s.claimStatus);
   const tableHeads = [
@@ -28,10 +30,11 @@ const ClaimsUI = ({
         componentData={componentData}
         status={claimsStatus}
         title={"Claims"}
+        handleStatusActive={handleStatusActive}
       />
 
       <Table
-        componentData={componentData}
+        componentData={filteredData}
         tableHeads={tableHeads}
         start={start}
         end={end}
