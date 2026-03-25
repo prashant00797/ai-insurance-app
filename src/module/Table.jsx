@@ -74,7 +74,7 @@ const Table = ({
         </button>
         <button
           onClick={() => handlePagination(currentPage + 1)}
-          disabled={currentPage === totalPages - 1}
+          disabled={currentPage >= totalPages - 1 || totalPages === 0}
           className="bg-primary-600 text-white rounded-default p-2 cursor-pointer lg:hover:brightness-110 lg:cursor-pointer lg:transition lg:duration-300 disabled:bg-primary-100 disabled:cursor-not-allowed disabled:text-gray-500 disabled:hover:brightness-100 "
         >
           ➡️

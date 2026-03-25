@@ -37,6 +37,7 @@ const ProviderPage = () => {
   const handleStatusActive = (e, currentStatus) => {
     e.preventDefault();
     setActiveStatus(currentStatus);
+    setCurrentPage(0);
   };
 
   const handlePagination = (n) => {
