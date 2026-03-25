@@ -371,7 +371,7 @@ Planned enhancements include:
 
 ---
 
-## 🚧 Project Updates
+## Project Updates
 
 ### SEO Enhancements
 
