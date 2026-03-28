@@ -1,3 +1,5 @@
+import { textResolver } from "../resolver/textResolver";
+
 const Table = ({
   componentData,
   tableHeads,
@@ -38,6 +40,10 @@ const Table = ({
                 return (
                   <tr key={row.id} className="hover:bg-gray-50">
                     {tableHeads.map((col) => {
+                      const rawData = row[col.key];
+                      const resolvedData = textResolver[col.key]
+                        ? textResolver[col.key](rawData)
+                        : rawData;
                       return (
                         <td
                           key={col.key}
@@ -48,10 +54,10 @@ const Table = ({
                             <span
                               className={`inline-flex items-center px-2.5 py-1 rounded-full text-xs font-medium ${statusStyles[row[col.key]]}`}
                             >
-                              {row[col.key]}
+                              {resolvedData}
                             </span>
                           ) : (
-                            row[col.key]
+                            resolvedData
                           )}
                         </td>
                       );
