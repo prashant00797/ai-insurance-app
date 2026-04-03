@@ -11,6 +11,14 @@
 🌐 **Live Demo**
 [https://insureai-portal.netlify.app](https://insureai-portal.netlify.app)
 
+## ⚠️ Demo Notice
+
+This project is a frontend portfolio demonstration.  
+The Gemini API key is called directly from the browser (client-side) for simplicity.  
+In a production application, API keys should always be stored server-side  
+(e.g., in a Next.js API route or a backend like FastAPI, Node.js) and never exposed to the client.  
+This architecture was chosen intentionally to focus on frontend AI integration patterns.
+
 ---
 
 ## 📌 Quick Links
