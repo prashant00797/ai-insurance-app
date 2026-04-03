@@ -27,7 +27,7 @@ const Table = ({
                   return (
                     <th
                       key={column.key}
-                      className="px-4 py-2 font-semibold whitespace-nowrap"
+                      className="px-4 py-2 font-semibold whitespace-nowrap w-40"
                     >
                       {column.header}
                     </th>
@@ -47,7 +47,7 @@ const Table = ({
                       return (
                         <td
                           key={col.key}
-                          className="px-4 py-4 font-regular whitespace-nowrap"
+                          className="px-4 py-4 font-regular whitespace-nowrap max-w-40"
                         >
                           {col.key === "claimStatus" ||
                           col.key === "providerStatus" ? (
