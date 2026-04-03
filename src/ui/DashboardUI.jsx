@@ -1,6 +1,7 @@
 import botImage from "../assets/botImage.webp";
 import { DashboardDefaultMessageConfig } from "../constant/config";
 import { DashboardTitle, Search } from "../constant/label";
+import Overlay from "../module/Overlay";
 import CardPage from "../page/CardPage";
 import BackUI from "./BackUI";
 
@@ -13,6 +14,8 @@ const DashboardUI = ({
   handleDefaultClick,
   hasSearched,
   inputValue,
+  showOverlay,
+  setShowOverlay,
 }) => {
   return (
     <>
@@ -20,7 +23,7 @@ const DashboardUI = ({
       <div
         className={`px-6 pt-6 lg:pt-4 pb-10 flex flex-col items-center ${hasSearched ? "gap-1.5" : "gap-20"}`}
       >
-        <div className=" flex gap-2 items-center w-full max-w-2xl mt-10 lg:mt-0 ">
+        <div className=" flex gap-2 items-center w-full max-w-2xl ">
           <input
             type="text"
             name="ai-search"
@@ -44,8 +47,21 @@ const DashboardUI = ({
         {!hasSearched ? (
           <div className="w-[95vw] lg:w-[60vw]  lg:h-65 shadow-level-2">
             <div className="flex justify-center items-center mb-3">
-              <div id="bot-img">
-                <img src={botImage} alt="bot" className="w-40" />
+              <div
+                onMouseEnter={() => setShowOverlay(true)}
+                onMouseLeave={() => setShowOverlay(false)}
+                onClick={() => setShowOverlay(true)}
+                className="relative"
+                id="bot-img"
+              >
+                <img
+                  src={botImage}
+                  alt="bot"
+                  className="w-40 animate-pulse cursor-pointer"
+                />
+                {showOverlay && (
+                  <Overlay onClose={() => setShowOverlay(false)} />
+                )}
               </div>
               <div>
                 <h1 className="text-page-title font-semibold text-center text-gray-900 lg:whitespace-nowrap">

@@ -144,3 +144,9 @@ export const DashboardDefaultMessageConfig = [
     defaultMessage: "Cardiologist in Delhi",
   },
 ];
+
+export const apiWarning = {
+  title: "🏗️Demo Build — API key is client-side (intentional for portfolio)",
+  descp: `This project is a frontend portfolio demonstration.  
+  In production, API keys belong server-side (Next.js API route / FastAPI / Node Js). Intentional for portfolio demonstration.`,
+};

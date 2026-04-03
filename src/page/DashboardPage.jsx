@@ -15,6 +15,7 @@ const DashboardPage = () => {
   const [isLoading, setIsLoading] = useState(false);
   const [hasSearched, setHasSearched] = useState(false);
   const [error, setError] = useState(false);
+  const [showOverlay, setShowOverlay] = useState(false);
 
   //routing
   const navigate = useNavigate();
@@ -127,6 +128,8 @@ const DashboardPage = () => {
           handleDefaultClick={handleDefaultClick}
           hasSearched={hasSearched}
           inputValue={inputValue}
+          showOverlay={showOverlay}
+          setShowOverlay={setShowOverlay}
         />
       )}
     </main>
