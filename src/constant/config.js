@@ -97,14 +97,12 @@ export const MobileNavConfig = [
 
 export const ProfileConfig = {
   headerLabel: "Profile",
-  userInfo: [
-    {
-      name: "prashant",
-      memberID: "51232",
-      dob: "Jan 12 1997",
-      coverageActive: true,
-    },
-  ],
+  userInfo: {
+    name: "prashant",
+    memberID: "51232",
+    dob: "Jan 12 1997",
+    coverageActive: true,
+  },
 };
 
 export const CovergaePlanConfig = {
@@ -127,6 +125,7 @@ export const DependentConfig = {
   headerLabel: "Dependents",
   dependents: [
     {
+      id: "dep-001",
       dependentName: "Arjun Roy",
       dependentRelation: "Father",
       dependentDOB: "Jan 11 1963",
