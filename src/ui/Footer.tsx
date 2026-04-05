@@ -1,17 +1,18 @@
+const contactData = {
+  headerLabel: "© 2026 Insure AI · ",
+  links: [
+    {
+      name: "Feedback · ",
+      link: "mailto:prashantnath6307@gmail.com",
+    },
+    {
+      name: "Github",
+      link: "https://github.com/prashant00797",
+    },
+  ],
+};
+
 const Footer = () => {
-  const contactData = {
-    headerLabel: "© 2026 Insure AI · ",
-    links: [
-      {
-        name: "Feedback · ",
-        link: "mailto:prashantnath6307@gmail.com",
-      },
-      {
-        name: "Github",
-        link: "https://github.com/prashant00797",
-      },
-    ],
-  };
   return (
     <div className="text-center text-sm text-gray-500 py-4 tracking-wide">
       {contactData.headerLabel}

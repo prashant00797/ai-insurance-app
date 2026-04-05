@@ -1,6 +1,6 @@
 import logo from "../assets/logo.svg";
 import { NavLink } from "react-router-dom";
-import { LogoutIcon, IconConfig } from "../utility/Icons.jsx";
+import { LogoutIcon, IconConfig } from "../utility/Icons.js";
 import { MobileNavConfig, SidebarConfig } from "../constant/config.js";
 import { Logout } from "../constant/label.js";
 

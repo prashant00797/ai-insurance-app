@@ -7,7 +7,7 @@ export const getClaims = async () => {
   });
 
   if (!data.ok) {
-    throw new Error(data.status);
+    throw new Error(data.status.toString());
   }
 
   return data.json();
@@ -30,12 +30,12 @@ export const getClaimsWithApiIntent = async ({
     headers: { "content-type": "application/json" },
   });
 
-  if (response.status === "404") {
+  if (response.status === 404) {
     return [];
   }
 
   if (!response.ok) {
-    throw new Error(response.status);
+    throw new Error(response.status.toString());
   }
 
   const data = await response.json();

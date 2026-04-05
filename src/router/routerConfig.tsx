@@ -1,13 +1,13 @@
 import { createBrowserRouter } from "react-router-dom";
-import AuthPage from "../page/AuthPage.jsx";
-import ProtectedPages from "../page/ProtectedPages.jsx";
-import DashboardPage from "../page/DashboardPage.jsx";
-import ClaimsPage from "../page/ClaimsPage.jsx";
-import ProviderPage from "../page/ProviderPage.jsx";
-import ProfilePage from "../page/ProfilePage.jsx";
-import ProtectedRoute from "./ProtectedRoute.jsx";
-import PublicRoute from "./PublicRoute.jsx";
-import { InvalidUrl } from "../module/ErrorBoundary.jsx";
+import AuthPage from "../page/AuthPage.js";
+import ProtectedPages from "../page/ProtectedPages.js";
+import DashboardPage from "../page/DashboardPage.js";
+import ClaimsPage from "../page/ClaimsPage.js";
+import ProviderPage from "../page/ProviderPage.js";
+import ProfilePage from "../page/ProfilePage.js";
+import ProtectedRoute from "./ProtectedRoute.js";
+import PublicRoute from "./PublicRoute.js";
+import { InvalidUrl } from "../module/ErrorBoundary.js";
 
 const appRoutes = createBrowserRouter([
   //public routes
