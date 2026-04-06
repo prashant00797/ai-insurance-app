@@ -37,7 +37,7 @@ Instead of navigating through complex filters, users can simply ask:
 Show cardiologists in Delhi
 Show approved claims
 Doctors in Pune
-Find in-network providers
+Find In-network providers
 ```
 
 The system uses **AI (Google Gemini)** to convert user queries into structured intent data, which is then used to fetch relevant claims or providers.
@@ -57,7 +57,7 @@ Example:
 User Query
 
 ```
-Show in-network cardiologists in Delhi
+Show In-network cardiologists in Delhi
 ```
 
 AI Response
@@ -68,7 +68,7 @@ AI Response
   "filters": {
     "speciality": "cardiologist",
     "location": "Delhi",
-    "providerStatus": "in-network"
+    "providerStatus": "In-network"
   },
   "limit": null
 }

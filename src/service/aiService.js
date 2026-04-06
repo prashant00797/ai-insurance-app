@@ -57,7 +57,7 @@ If the user asks about providers, return JSON in this exact format:
       "Pune" |
       "Gurugram" |
       null,
-    "providerStatus": "in-network" | "out-network" | null
+    "providerStatus": "In-network" | "Out-network" | null
   },
   "limit": number | null
 }
