@@ -3,7 +3,7 @@ export const AuthTagLinesConfig = {
   taglines: [
     "✔️Get Instant answers about your health plan",
     "✔️Easily manage your claims",
-    "✔️Find in-network or out-network doctors quickly",
+    "✔️Find In-network or Out-network doctors quickly",
   ],
 };
 
