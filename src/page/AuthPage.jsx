@@ -2,6 +2,7 @@ import AuthUI from "../ui/AuthUI";
 import { useState } from "react";
 import checkValidation from "../utility/validate";
 import { logInUserService, signUpUserService } from "../service/firebaseApi";
+import { USER_DEFAULT_EMAIL, USER_DEFAULT_PWD } from "../constant/common";
 const AuthPage = () => {
   const [mode, setMode] = useState("Login");
   const [formData, setFormData] = useState({
@@ -26,7 +27,6 @@ const AuthPage = () => {
     }));
   };
 
-  //
   const handleSignup = async ({ email, pwd, fname }) => {
     try {
       setIsLoading(true);
@@ -38,7 +38,6 @@ const AuthPage = () => {
     }
   };
 
-  //
   const handleLogin = async ({ email, pwd }) => {
     try {
       setIsLoading(true);
@@ -68,6 +67,14 @@ const AuthPage = () => {
     }
   };
 
+  const handleGuestLogin = () => {
+    setFormData((prev) => ({
+      ...prev,
+      email: USER_DEFAULT_EMAIL,
+      pwd: USER_DEFAULT_PWD,
+    }));
+  };
+
   return (
     <AuthUI
       mode={mode}
@@ -77,6 +84,7 @@ const AuthPage = () => {
       formData={formData}
       errorMessage={errorMessage}
       isLoading={isLoading}
+      handleGuestLogin={handleGuestLogin}
     />
   );
 };

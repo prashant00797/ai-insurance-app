@@ -46,7 +46,7 @@ const DashboardPage = () => {
     handleSearchFlow(query);
   };
 
-  //main check to gemini api and based on intent getting send result to mockapi.io
+  //main check to open ai api and based on intent getting send result to mockapi.io
   const handleSearchFlow = async (query) => {
     setIsLoading(true);
 

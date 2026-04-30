@@ -3,21 +3,13 @@
 ![React](https://img.shields.io/badge/React-18-blue)
 ![Vite](https://img.shields.io/badge/Vite-Frontend-purple)
 ![TailwindCSS](https://img.shields.io/badge/TailwindCSS-UI-38BDF8)
-![Gemini](https://img.shields.io/badge/AI-Google%20Gemini-orange)
+![OpenAI](https://img.shields.io/badge/AI-OpenAI-412991)
 ![Status](https://img.shields.io/badge/Status-Completed-success)
 
 > An intelligent insurance dashboard that uses **AI-powered natural language search** to help users find providers and claims instantly.
 
 🌐 **Live Demo**
 [https://insureai-portal.netlify.app](https://insureai-portal.netlify.app)
-
-## ⚠️ Demo Notice
-
-This project is a frontend portfolio demonstration.  
-The Gemini API key is called directly from the browser (client-side) for simplicity.  
-In a production application, API keys should always be stored server-side  
-(e.g., in a Next.js API route or a backend like FastAPI, Node.js) and never exposed to the client.  
-This architecture was chosen intentionally to focus on frontend AI integration patterns.
 
 ---
 
@@ -40,7 +32,7 @@ Doctors in Pune
 Find In-network providers
 ```
 
-The system uses **AI (Google Gemini)** to convert user queries into structured intent data, which is then used to fetch relevant claims or providers.
+The system uses **OPEN AI** to convert user queries into structured intent data, which is then used to fetch relevant claims or providers.
 
 This project demonstrates **AI integration with frontend architecture**, clean state management, and robust error handling.
 
@@ -50,7 +42,7 @@ This project demonstrates **AI integration with frontend architecture**, clean s
 
 ### 🤖 AI Smart Search
 
-Natural language queries are processed using **Gemini AI** to extract structured intent.
+Natural language queries are processed using **OPEN AI** to extract structured intent.
 
 Example:
 
@@ -155,13 +147,15 @@ This prevents blank screens and improves user experience.
 ```
 User Query
    ↓
-Gemini AI API
+Netlify Serverless Function
    ↓
-Intent + Filters JSON
+OpenAI API (intent extraction)
    ↓
-Service Layer
+Structured JSON (intent + filters)
    ↓
-Mock API Filtering
+Service Layer (business logic)
+   ↓
+Mock API / Data Filtering
    ↓
 UI Rendering
 ```
@@ -175,6 +169,9 @@ This architecture allows natural language queries to be translated into structur
 The project follows a **clean separation of concerns** between UI, business logic, and API services.
 
 ```
+└── netlify
+     └── functions
+           └── claims-provider.js (serveless function)
 src
 │
 ├── assets
@@ -227,7 +224,7 @@ src
 
 ### AI
 
-- Google Gemini API
+- OpenAI API
 
 ### Authentication
 
@@ -266,7 +263,8 @@ npm install
 Run the development server
 
 ```
-npm run dev
+npm run dev → runs frontend only (no functions)
+npx netlify dev → runs frontend + serverless functions
 ```
 
 ---
@@ -276,8 +274,7 @@ npm run dev
 Create a `.env` file:
 
 ```
-VITE_GEMINI_API_KEY=your_gemini_api_key
-VITE_FIREBASE_API_KEY=your_firebase_api_key
+OPENAI_API_KEY=your_openai_api_key
 ```
 
 ---
@@ -347,45 +344,9 @@ This project showcases practical skills in:
 
 This project is built for **learning and portfolio purposes**.
 
-![Portfolio Project](https://img.shields.io/badge/Portfolio-Project-blue)
-
-# 👨‍💻 Author
-
-**Prashant Nath**
-
-Frontend Developer
-React | JavaScript | UI Engineering
-
----
-
-# ⭐ If you like this project
-
-Give the repository a ⭐ on GitHub!
-
----
-
-⚡ Version 1 – AI Insurance Portal (MVP)
-
-🚧 **Project Status: Version 1 (MVP)**
-
-This project currently represents the first version of the AI Insurance Portal.  
-More AI capabilities and platform improvements are planned for future updates.
-
-Planned enhancements include:
-
-- Advanced filters for claims and provider pages
-- Improved AI query understanding
-- Connecting the Profile page (currently static) to Firestore for persistent user data
-
 ---
 
 ## Project Updates
-
-### SEO Enhancements
-
-- Added essential meta tags for better search engine visibility
-- Improved page metadata structure for shareability and indexing
-  Note: Built with React CSR, so meta tags are static.
 
 ### Config-Driven UI
 

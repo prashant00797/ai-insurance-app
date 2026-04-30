@@ -21,6 +21,7 @@ const AuthUI = ({
   formData,
   errorMessage,
   isLoading,
+  handleGuestLogin,
 }) => {
   const FilterFormFields = FormConfig.filter((field) => {
     if (field.flag === "Login-SignUp") return true;
@@ -121,6 +122,14 @@ const AuthUI = ({
             <button className="w-full bg-primary-500 rounded-default h-11 cursor-pointer hover:brightness-110 text-primary-100">
               {mode === Login ? Login : Signup}
             </button>
+            {mode === Login && (
+              <button
+                onClick={handleGuestLogin}
+                className="w-full bg-primary-100 rounded-default h-11 cursor-pointer hover:brightness-110 text-primary-500 mt-2"
+              >
+                Guest Login
+              </button>
+            )}
           </form>
         </div>
       </div>
