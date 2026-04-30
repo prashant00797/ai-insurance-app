@@ -34,7 +34,7 @@ Find In-network providers
 
 The system uses **OPEN AI** to convert user queries into structured intent data, which is then used to fetch relevant claims or providers.
 
-This project demonstrates **AI integration with frontend architecture**, clean state management, and robust error handling.
+This project demonstrates **AI integration with frontend architecture**, clean state management and robust error handling.
 
 ---
 
@@ -166,7 +166,7 @@ This architecture allows natural language queries to be translated into structur
 
 # 🏗️ Project Architecture
 
-The project follows a **clean separation of concerns** between UI, business logic, and API services.
+The project follows a **clean separation of concerns** between UI, business logic and API services.
 
 ```
 └── netlify
@@ -320,7 +320,7 @@ View providers.
 
 ### Provider/ Claims AI Search
 
-Find doctors by location, speciality, and network status or show my denied claims, my last 3 approved claims
+Find doctors by location, speciality and network status or show my denied claims, my last 3 approved claims
 ![Dashboard-Claim-AI-Search](screenshots/DashbordC1.png)
 ![Dashboard-Provider-AI-Search](screenshots/Dashboard%201.png)
 
